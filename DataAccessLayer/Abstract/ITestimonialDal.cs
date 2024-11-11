@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.Abstract
 {
-    public interface IGenericDal<T>
+    public interface ITestimonialDal : IGenericDal<ITestimonialDal>
     {
-        void Insert(T entity);
-        void Delete(T entity);
-        void Update(T entity);
-        List<T> GetList();
     }
 }
