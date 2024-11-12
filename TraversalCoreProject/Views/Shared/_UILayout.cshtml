@@ -2,16 +2,22 @@
 	Layout = null;
 }
 
-<!DOCTYPE html>
+<!doctype html>
 
-<html>
-<head>
-	<meta name="viewport" content="width=device-width" />
-	<title>_UILayout</title>
-</head>
+<html lang="zxx">
+
+@await Html.PartialAsync("/Views/LayoutPartial/_HeaderPartial.cshtml")
+
 <body>
-	<div class="container">
-		@RenderBody()
-	</div>
+
+	@await Html.PartialAsync("/Views/LayoutPartial/_NavbarPartial.cshtml")
+
+	@RenderBody()
+
+	@await Html.PartialAsync("/Views/LayoutPartial/_FooterPartial.cshtml")
+
+	@await Html.PartialAsync("/Views/LayoutPartial/_ScriptsPartial.cshtml")
+
 </body>
+
 </html>
