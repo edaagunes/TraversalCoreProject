@@ -1,6 +1,12 @@
-﻿<div class="comments mt-5">
-    <h4 class="side-title ">Comments (2)</h4>
+﻿@model List<Comment>
+
+<div class="comments mt-5">
+    <h4 class="side-title ">Yorumlar (2)</h4>
+    @foreach (var item in Model)
+    {
+
     <div class="media mt-4">
+
         <div class="img-circle">
             <img src="/Traversal-Liberty/assets/images/c1.jpg" class="img-fluid" alt="...">
         </div>
@@ -9,21 +15,20 @@
 
             <ul class="time-rply mb-2">
                 <li>
-                    <a href="#URL" class="name mt-0 mb-2 d-block">William Jack</a>
-                    June 15th, 2020 - 10:02 pm
-
+                    <a href="#URL" class="name mt-0 mb-2 d-block">@item.CommentUser</a>
+                   @item.CommentDate
                 </li>
                 <li class="reply-last">
                     <a href="#reply" class="reply">
-                        Reply
+                        Yanıtla
                     </a>
                 </li>
             </ul>
             <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellat, hic
-                reprehenderit eum cupiditate deleniti, Lorem ipsum dolor sit amet consectetur adipisicing.....
+                @item.CommentContent
             </p>
         </div>
     </div>
 
+    }
 </div>
