@@ -12,8 +12,6 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfFeature2Dal : GenericRepository<Feature2>, IFeature2Dal
     {
-        public EfFeature2Dal(Context context) : base(context)
-        {
-        }
+
     }
 }

@@ -12,8 +12,6 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfTestimonialDal : GenericRepository<Testimonial>, ITestimonialDal
     {
-        public EfTestimonialDal(Context context) : base(context)
-        {
-        }
+
     }
 }

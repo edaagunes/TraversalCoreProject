@@ -12,8 +12,6 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfGuideDal : GenericRepository<Guide>, IGuideDal
     {
-        public EfGuideDal(Context context) : base(context)
-        {
-        }
+
     }
 }

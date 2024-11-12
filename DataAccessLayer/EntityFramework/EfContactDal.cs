@@ -12,8 +12,5 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfContactDal : GenericRepository<Contact>, IContactDal
     {
-        public EfContactDal(Context context) : base(context)
-        {
-        }
     }
 }
