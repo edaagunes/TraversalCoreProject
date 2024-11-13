@@ -1,69 +1,113 @@
-﻿@{
+﻿@model TraversalCoreProject.Models.UserRegisterViewModel
+@{
 	Layout = null;
 }
 
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
 <!DOCTYPE html>
-<html>
+<html lang="zxx">
+
 <head>
-	<meta charset="utf-8">
 	<title>Traversal | Misafir Kayıt Ekranı</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords"
+		  content="Invent Signup Form Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
 
-	<!-- LINEARICONS -->
-	<link rel="stylesheet" href="~/colorlib-regform-26/fonts/linearicons/style.css">
-
-	<!-- STYLE CSS -->
-	<link rel="stylesheet" href="~/colorlib-regform-26/css/style.css">
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+	<!-- //Meta tag Keywords -->
+	<!--/Style-CSS -->
+	<link rel="stylesheet" href="~/web/css/style.css" type="text/css" media="all" />
+	<!--//Style-CSS -->
+	<link href="~/bootstrap/css/bootstrap.css" rel="stylesheet" />
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </head>
 
 <body>
+	<!-- /login-section -->
+	<section class="w3l-login-6">
+		<div class="login-hny">
+			<div class="form-content">
+				<div class="form-right">
+					<div class="overlay">
+						<div class="grid-info-form">
+							<h5>Traversal Rezervasyon</h5>
+							<h3>Hesap Oluşturun</h3>
+							<p>
+								Deneyimli rehberlerimiz eşliğinde, İskandinav ülkelerinin soğuğundan Akdeniz'in sıcaklığına, Kapadokya’dan Sürmene'ye, Ölüdeniz’den Assos'a, Balkanlar'dan Mısır çöllerine uzanan tüm rotalarla, hayal ettiğiniz her yere bir tık uzaktayız. Seyahatlerimize katılmak için hemen kaydolun!
+							</p>
+							<a href="/Default/Index" class="read-more-1 btn">Hadİ Başlayalım</a>
+						</div>
 
-	<div class="wrapper">
-		<div class="inner">
-			<img src="~/colorlib-regform-26/images/image-1.png" alt="" class="image-1">
-			<form action="">
-				<h3>Yenİ Hesap Oluşturun</h3>
-				<div class="form-holder">
-					<span class="lnr lnr-user"></span>
-					<input type="text" class="form-control" placeholder="Ad">
+					</div>
 				</div>
-				<div class="form-holder">
-					<span class="lnr lnr-user"></span>
-					<input type="text" class="form-control" placeholder="Soyad">
+				<div class="form-left">
+					<div class="middle">
+						<h4>Bize Katılın!</h4>
+						<p>Hesabınızı Oluşturun</p>
+					</div>
+					<form action="#" method="post" class="signin-form">
+						
+						<div class="form-input">
+							<input type="text" asp-for="Name" required placeholder="Ad"  />
+							<span asp-validation-for="Name" style="color: #ff0000"></span>
+						</div>
+						<div class="form-input">
+							<input type="text" asp-for="Surname" required placeholder="Soyad"  />
+							<span asp-validation-for="Surname" style="color: #ff0000"></span>
+						</div>
+						<div class="form-input">
+							<input type="text" asp-for="Username" placeholder="Kullanıcı Adı"  />
+							<span asp-validation-for="Username" style="color: #ff0000"></span>
+						</div>
+						<div class="form-input">
+							<input type="email" asp-for="Mail" required placeholder="Mail"  />
+							<span asp-validation-for="Mail" style="color: #ff0000"></span>
+						</div>
+						<div class="form-input">
+							<input type="password" asp-for="Password" placeholder="Şifre"  />
+							<span asp-validation-for="Password" style="color: #ff0000"></span>
+						</div>
+						<div class="form-input">
+							<input type="password" asp-for="ConfirmPassword" placeholder="Şifre Tekrar"  />
+							<span asp-validation-for="ConfirmPassword" style="color: #ff0000"></span>
+						</div>
+						<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+						<label class="container">
+							<a href="#" >
+								Şartları okudum
+							</a> Kabul Ediyorum
+								<input type="checkbox">
+							<span class="checkmark"></span>
+						</label>
+						<button class="btn">Kayıt Ol</button>
+					</form>
+					<div class="copy-right text-center">
+						<p>
+							© @DateTime.Now.Year Tüm Hakları Saklıdır. 
+							
+						</p>
+					</div>
 				</div>
-				<div class="form-holder">
-					<span class="lnr lnr-envelope"></span>
-					<input type="text" class="form-control" placeholder="Mail Adresi">
-				</div>
-				<div class="form-holder">
-					<span class="lnr lnr-phone-handset"></span>
-					<input type="text" class="form-control" placeholder="Telefon Numarası">
-				</div>
-				<div class="form-holder">
-					<span class="lnr lnr-lock"></span>
-					<input type="password" class="form-control" placeholder="Şifre">
-				</div>
-				<div class="form-holder">
-					<span class="lnr lnr-lock"></span>
-					<input type="password" class="form-control" placeholder="Şifre Tekrar">
-				</div>
-				<button>
-					<span>Kayıt Ol</span>
-				</button>
-				<br />
-				<div class="text-black-50">
-					<a class="txt2" href="/Login/SignIn">
-						Bir Hesabınız Var Mı?
-						<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-					</a>
-				</div>
-			</form>
-			<img src="~/colorlib-regform-26/images/image-2.png" alt="" class="image-2">
+
+			</div>
+
 		</div>
-
-	</div>
-
-	<script src="~/colorlib-regform-26/js/jquery-3.3.1.min.js"></script>
-	<script src="~/colorlib-regform-26/js/main.js"></script>
+	</section>
+	<!-- //login-section -->
 </body>
+
 </html>
