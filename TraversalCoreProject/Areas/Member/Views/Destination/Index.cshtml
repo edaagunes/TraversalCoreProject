@@ -1,0 +1,76 @@
+﻿@using EntityLayer.Concrete
+@model List<Destination>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+    int count = 0;
+}
+
+<h1>Aktif Tur Rotaları</h1>
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header pb-0">
+                <h6></h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table align-items-center mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Şehİr</th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Süre</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kapasİte</th>
+                                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fİyat</th>
+                                <th class="text-secondary opacity-7"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                <tr>
+                                    <td class ="align-middle text-center text-sm">  <p class="text-xs text-secondary mb-0">@count</p></td>
+                                <td>
+                                    <div class="d-flex px-1 py-1">
+                                        <div>                                               
+                                            <img src="@item.Image" class="avatar avatar-sm me-3" alt="user1">
+
+                                        </div>
+                                            <h6 class="mb-0 text-sm">@item.City</h6>
+                                    </div>
+                                </td>
+                               @*  <td>
+                                        <div class="d-flex flex-column justify-content-center">
+                                          
+
+                                        </div>
+                                </td> *@
+                                <td>
+                                    <p class="text-xs font-weight-bold mb-0">@item.DayNight</p>
+                                   
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                        <p class="text-xs text-secondary mb-0">@item.Capacity</p>
+                                        @* Status
+                                       <span class="badge badge-sm bg-gradient-success">Online</span>*@
+                                </td> 
+                                <td class="align-middle text-center">
+                                    <span class="text-secondary text-xs font-weight-bold">@item.Price ₺</span>
+                                </td>
+                                <td class="align-middle">
+                                    <a href="#" class="btn btn-primary xs">
+                                        Detaylar
+                                    </a>
+                                </td>
+                            </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
