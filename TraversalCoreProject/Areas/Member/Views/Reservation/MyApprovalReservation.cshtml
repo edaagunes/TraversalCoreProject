@@ -1,18 +1,17 @@
 ﻿@using EntityLayer.Concrete
 @model List<Reservation>
 @{
-	ViewData["Title"] = "MyCurrentReservation";
+	ViewData["Title"] = "MyApprovalReservation";
 	Layout = "~/Views/Shared/_UserLayout.cshtml";
-	int count = 0;
+	int count=0;
 }
 
-<h1>Aktif Rezervasyonlarım</h1>
-
+<h1>Onay Bekleyen Rezervasyonlar</h1>
 @if (!Model.Any())
 {
 	<br />
 	<br />
-	<span style="color:darkslategray"><b>Aktif Rezervasyon Bulunmamaktadır.</b></span>
+	<span style="color:darkslategray"><b>Onay Bekleyen Rezervasyon Bulunmamaktadır.</b></span>
 }
 
 else

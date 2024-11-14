@@ -1,8 +1,39 @@
-﻿
+﻿@using EntityLayer.Concrete
+@model List<Reservation>
 @{
-    ViewData["Title"] = "MyOldReservation";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+	ViewData["Title"] = "MyOldReservation";
+	Layout = "~/Views/Shared/_UserLayout.cshtml";
+	int count = 0;
 }
 
 <h1>Geçmiş Rezervasyonlarım</h1>
+@if (!Model.Any())
+{
+<br /><br />
+	<span style="color:darkslategray"><b>Geçmiş Rezervasyon Bulunmamaktadır.</b></span>
+}
 
+else
+{
+	<br />
+	<table class="table table-bordered">
+		<tr>
+			<th>#</th>
+			<th>Lokasyon</th>
+			<th>Kişi Sayısı</th>
+			<th>Rezervasyon Tarihi</th>
+			<th>Durum</th>
+		</tr>
+		@foreach (var item in Model)
+		{
+			count++;
+			<tr>
+				<td>@count</td>
+				<td>@item.Destination.City</td>
+				<td>@item.PersonCount</td>
+				<td>@item.ReservationDate.ToShortDateString()</td>
+				<td>@item.Status</td>
+			</tr>
+		}
+	</table>
+}
