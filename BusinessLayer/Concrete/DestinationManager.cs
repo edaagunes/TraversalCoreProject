@@ -20,12 +20,12 @@ namespace BusinessLayer.Concrete
 
 		public void TAdd(Destination entity)
 		{
-			throw new NotImplementedException();
+			_destinationDal.Insert(entity);
 		}
 
 		public void TDelete(Destination entity)
 		{
-			throw new NotImplementedException();
+			_destinationDal.Delete(entity);
 		}
 
 		public Destination TGetById(int id)
@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
 		public void TUpdate(Destination entity)
 		{
-			throw new NotImplementedException();
+			_destinationDal.Update(entity);
 		}
 	}
 }
