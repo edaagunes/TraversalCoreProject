@@ -130,6 +130,9 @@
     <None Include="wwwroot\Login_v1\vendor\select2\select2.min.css" />
     <None Include="wwwroot\Login_v1\vendor\select2\select2.min.js" />
     <None Include="wwwroot\Login_v1\vendor\tilt\tilt.jquery.min.js" />
+    <None Include="wwwroot\sneat-1.0.0\.github\workflows\handle-new-issue-comment.yml" />
+    <None Include="wwwroot\sneat-1.0.0\.github\workflows\handle-new-issue.yml" />
+    <None Include="wwwroot\sneat-1.0.0\.github\workflows\issue-staler.yml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -157,6 +160,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Member\Data\" />
   </ItemGroup>
 
