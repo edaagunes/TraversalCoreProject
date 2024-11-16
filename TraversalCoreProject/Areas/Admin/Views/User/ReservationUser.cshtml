@@ -1,0 +1,43 @@
+﻿@model List<Reservation>
+@{
+	ViewData["Title"] = "ReservationUser";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<div class="card">
+	<h5 class="card-header">Kullanıcının Geçmiş Rezervasyonları</h5>
+	<br>
+	<div class="table-responsive text-nowrap">
+		<table class="table table-borderless">
+			<thead>
+				<tr>
+					<th>#</th>
+				@* 	<th>Misafir Ad Soyad</th> *@
+					<th>Rota</th>
+					<th>Kİşİ Sayısı</th>
+					<th>Tarİh</th>
+					<th>Detaylar</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.ReservationId</td>
+						@* <td><strong>@item.AppUser.Name @item.AppUser.Surname</strong></td> *@
+						<td><strong>@item.Destination.City</strong></td>
+						<td><strong>@item.PersonCount</strong></td>
+						<td><strong>@(((DateTime)item.ReservationDate).ToString("dd-MMM-yyyy"))</strong></td>
+						
+						<td><a href="#" class="btn btn-outline-success">Detaylar</a></td>
+						
+					</tr>
+				}
+			</tbody>
+		</table>
+		<br />
+	</div>
+	<br />
+</div>

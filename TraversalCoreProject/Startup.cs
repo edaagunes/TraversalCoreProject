@@ -1,5 +1,6 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
+using BusinessLayer.Container;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
@@ -35,8 +36,7 @@ namespace TraversalCoreProject
 			services.AddDbContext<Context>();
 			services.AddIdentity<AppUser, AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>().AddEntityFrameworkStores<Context>();
 
-			services.AddScoped<ICommentService,CommentManager>();
-			services.AddScoped<ICommentDal,EfCommentDal>();
+			services.ContainerDependencies();
 
 			services.AddControllersWithViews();
 
