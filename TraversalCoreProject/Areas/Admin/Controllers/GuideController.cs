@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace TraversalCoreProject.Areas.Admin.Controllers
 {
 	[Area("Admin")]
+	[Route("Admin/[controller]/[action]/{id?}")]
 	public class GuideController : Controller
 	{
 		private readonly IGuideService _guideService;
@@ -62,11 +63,13 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
 
 		public IActionResult ChangeToActive(int id)
 		{
-			return RedirectToAction("Index");
+			_guideService.TChangeToActiveByGuide(id);
+			return RedirectToAction("Index", "Guide", new {area="Admin"});
 		}
 		public IActionResult ChangeToPassive(int id)
 		{
-			return RedirectToAction("Index");
+			_guideService.TChangeToPassiveByGuide(id);
+			return RedirectToAction("Index", "Guide", new { area = "Admin" });
 		}
 	}
 }

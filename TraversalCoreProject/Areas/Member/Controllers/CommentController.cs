@@ -7,7 +7,8 @@ namespace TraversalCoreProject.Areas.Member.Controllers
     {
         [Area("Member")]
         [AllowAnonymous]
-        public IActionResult Index()
+		[Route("Member/[controller]/[action]/{id?}")]
+		public IActionResult Index()
         {
             return View();
         }

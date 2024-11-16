@@ -10,8 +10,23 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EfGuideDal : GenericRepository<Guide>, IGuideDal
-    {
+	public class EfGuideDal : GenericRepository<Guide>, IGuideDal
+	{
+		Context context = new Context();
+		public void ChangeToActiveByGuide(int id)
+		{			
+			var values = context.Guides.Find(id);
+			values.Status = true;
+			context.Update(values);
+			context.SaveChanges();
+		}
 
-    }
+		public void ChangeToPassiveByGuide(int id)
+		{
+			var values = context.Guides.Find(id);
+			values.Status = false;
+			context.Update(values);
+			context.SaveChanges();
+		}
+	}
 }

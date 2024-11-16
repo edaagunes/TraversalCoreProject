@@ -7,7 +7,8 @@ namespace TraversalCoreProject.Areas.Member.Controllers
 {
     [AllowAnonymous]
     [Area("Member")]
-    public class DestinationController : Controller
+	[Route("Member/[controller]/[action]/{id?}")]
+	public class DestinationController : Controller
     {
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
         public IActionResult Index()

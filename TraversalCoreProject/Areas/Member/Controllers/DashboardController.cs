@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 namespace TraversalCoreProject.Areas.Member.Controllers
 {
 	[Area("Member")]
+	[Route("Member/[controller]/[action]/{id?}")]
 	public class DashboardController : Controller
 	{
 		private readonly UserManager<AppUser> _userManager;

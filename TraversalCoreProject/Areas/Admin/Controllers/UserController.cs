@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 namespace TraversalCoreProject.Areas.Admin.Controllers
 {
 	[Area("Admin")]
+	[Route("Admin/[controller]/[action]/{id?}")]
 	public class UserController : Controller
 	{
 		private readonly IAppUserService _userService;

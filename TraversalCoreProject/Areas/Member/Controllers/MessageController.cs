@@ -2,7 +2,9 @@
 
 namespace TraversalCoreProject.Areas.Member.Controllers
 {
-    public class MessageController : Controller
+	[Area("Member")]
+	[Route("Member/[controller]/[action]/{id?}")]
+	public class MessageController : Controller
     {
         public IActionResult Index()
         {
