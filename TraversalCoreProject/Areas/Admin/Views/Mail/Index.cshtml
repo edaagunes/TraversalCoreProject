@@ -1,0 +1,54 @@
+﻿@model TraversalCoreProject.Models.MailRequest
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form method="post">
+	<div class="form-group">
+		@Html.Label("Alıcı Mail Adresi")
+		<input type="text" asp-for="ReceiverMail" class="form-control" />
+	</div>
+	<br />
+	<div class="form-group">
+		@Html.Label("Konu Başlığı")
+		<input type="text" asp-for="Subject" class="form-control" />
+	</div>
+	<br />
+	<div class="form-group">
+		@Html.Label("Mesaj İçeriği")
+		<textarea cols="30" rows="5" asp-for="Body" class="form-control"> </textarea>
+	</div>
+	<br />
+	<button type="submit" class="btn btn-outline-primary">Mail Gönder</button>
+</form>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <text>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Başarılı!',
+                        text: '@Html.Raw(TempData["SuccessMessage"])',
+                        confirmButtonText: 'Tamam'
+                    });
+        </text>
+    }
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <text>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hata!',
+                        text: '@Html.Raw(TempData["ErrorMessage"])',
+                        confirmButtonText: 'Tamam'
+                    });
+        </text>
+    }
+    });
+</script>
