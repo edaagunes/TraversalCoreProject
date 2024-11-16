@@ -10,11 +10,13 @@
 	<div class="form-group">
 		@Html.Label("Rehber Ad-Soyad")
 		<input type="text" asp-for="Name" class="form-control" />
+		<span asp-validation-for="Name" class="text-danger"></span>
 	</div>
 	<br />
 	<div class="form-group">
 		@Html.Label("Görsel")
 		<input type="text" asp-for="Image" class="form-control" />
+		<span asp-validation-for="Image" class="text-danger"></span>
 	</div>
 	<br />
 	<div class="form-group">
@@ -30,6 +32,7 @@
 	<div class="form-group">
 		@Html.Label("Açıklama")
 		<textarea cols="30" rows="3" asp-for="Description" class="form-control"> </textarea>
+		<span asp-validation-for="Description" class="text-danger"></span>
 	</div>
 	<br />
 	<button type="submit" class="btn btn-outline-primary">Oluştur</button>
