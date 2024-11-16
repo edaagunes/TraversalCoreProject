@@ -1,0 +1,61 @@
+﻿@model List<Guide>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <h5 class="card-header">Rehber Listesi</h5>
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Rehber</th>
+                    <th>Açıklama</th>
+                    <th>Görsel</th>
+                    <th>Durum</th>
+                    <th>Düzenle</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td><strong>@item.Name</strong></td>
+                        <td>@item.Description</td>
+                        <td>
+                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                <li data-bs-toggle="tooltip"
+                                    data-popup="tooltip-custom"
+                                    data-bs-placement="top"
+                                    class="avatar avatar-md pull-up"
+                                    title="@item.Name">
+                                    <img src="@item.Image" alt="Avatar" class="rounded-circle" />
+                                </li>
+                            </ul>
+                        </td>
+                        @{
+                            if (item.Status == true)
+                            {
+                                <td><a href="#" class="btn btn-outline-warning">Pasif Yap</a></td>
+                            }
+                            else
+                            {
+                                <td><a href="#" class="btn btn-outline-secondary">Aktif Yap</a></td>
+                            }
+                        }                     
+                        <td><a href="#" class="btn btn-outline-success">Düzenle</a></td>
+                    </tr>
+                }          
+            </tbody>          
+        </table>
+        <br />
+        <a href="/Admin/Guide/AddGuide" class="btn btn-outline-primary" style="margin-left:10px">Yeni Rehber Ekle</a>
+        <br />
+    </div>
+    <br />
+</div>
