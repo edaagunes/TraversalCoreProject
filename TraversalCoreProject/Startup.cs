@@ -1,10 +1,14 @@
 using BusinessLayer.Abstract;
 using BusinessLayer.Concrete;
 using BusinessLayer.Container;
+using BusinessLayer.ValidationRules;
 using DataAccessLayer.Abstract;
 using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
+using DTOLayer.DTOs.AnnouncementDTOs;
 using EntityLayer.Concrete;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -47,6 +51,11 @@ namespace TraversalCoreProject
 
 			services.ContainerDependencies();
 
+			services.AddAutoMapper(typeof(Startup));
+			services.AddTransient<IValidator<AnnouncementAddDTOs>,AnnouncementValidator>();
+
+			services.AddControllersWithViews().AddFluentValidation();
+
 			services.AddControllersWithViews();
 
 			services.AddMvc(config =>
@@ -58,9 +67,9 @@ namespace TraversalCoreProject
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env,ILoggerFactory loggerFactory)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
 		{
-			var path=Directory.GetCurrentDirectory();
+			var path = Directory.GetCurrentDirectory();
 			loggerFactory.AddFile($"{path}\\Logs\\Log1.txt");
 
 			if (env.IsDevelopment())
