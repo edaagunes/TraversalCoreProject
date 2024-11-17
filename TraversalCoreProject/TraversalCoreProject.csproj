@@ -168,6 +168,7 @@
   <ItemGroup>
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Member\Data\" />
+    <Folder Include="CQRS\Comments\" />
     <Folder Include="wwwroot\pdfReports\" />
   </ItemGroup>
 
