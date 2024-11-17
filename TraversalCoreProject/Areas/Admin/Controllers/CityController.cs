@@ -3,6 +3,7 @@ using DocumentFormat.OpenXml.Office2010.ExcelAc;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using TraversalCoreProject.Models;
 
@@ -30,19 +31,25 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult AddCityDestination(Destination destination)
+		public IActionResult AddCityDestination([FromBody] Destination destination)
 		{
-			destination.Status = true;
-			_destinationService.TAdd(destination);
-			var values = JsonConvert.SerializeObject(destination);
+			if (destination == null)
+			{
+				return BadRequest("Eksik veya hatalı veri gönderildi."); // Hatalı istek kontrolü
+			}
+
+			destination.Status = true; // Varsayılan durumu aktif olarak ayarla
+			_destinationService.TAdd(destination); // Veritabanına ekle
+
+			var values = JsonConvert.SerializeObject(destination); // Eklendikten sonra veriyi döndür
 			return Json(values);
 		}
-
-		public IActionResult GetById(int DestinationID)
+		[HttpGet]
+		public IActionResult GetById(int id)
 		{
-			var values = _destinationService.TGetById(DestinationID);
-			var jsonValues = JsonConvert.SerializeObject(values);
-			return Json(jsonValues);
+			var values = _destinationService.TGetById(id);
+			//	var jsonValues = JsonConvert.SerializeObject(values);
+			return Json(values);
 		}
 
 		public IActionResult DeleteCity(int id)
@@ -52,12 +59,22 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
 			return NoContent();
 		}
 
-		public IActionResult UpdateCity(Destination destination)
+		[HttpPost]
+		public IActionResult UpdateCity([FromBody] Destination destination)
 		{
-			_destinationService.TUpdate(destination);
-			var v = JsonConvert.SerializeObject(destination);
-			return Json(v);
+			// Boş alan kontrolü
+			if (string.IsNullOrEmpty(destination.City) || string.IsNullOrEmpty(destination.DayNight) || destination.DestinationId <= 0)
+			{
+				return Json(new { success = false, message = "Lütfen tüm alanları doldurun." });
+			}
+
+			// Güncelleme işlemi
+			_destinationService.TUpdate(destination); // Veritabanı güncelleme işlemi
+			Console.WriteLine("Güncelleme başarılı!");
+			return Json(new { success = true, message = "Şehir başarıyla güncellendi." });
+
 		}
+
 
 		//public static List<CityClass> cities = new List<CityClass>
 		//{
