@@ -5,39 +5,6 @@
 }
 
 
-@* <div class="card">
-    <h5 class="card-header">Api Imdb Top 100 Film Listesi</h5>
-    <div class="table-responsive text-nowrap">
-        <table class="table">
-            <thead class="table-light">
-                <tr>
-                    <th>#</th>
-                    <th>Fİlm Adı</th>
-                    <th>IMBD Puanı</th>
-                    <th>Yapım Yılı</th>
-                    <th>Fragman</th>
-                </tr>
-            </thead>
-            <tbody class="table-border-bottom-0">
-                @foreach (var item in Model)
-                {             
-                    <tr>
-                        <td>@item.rank</td>
-                        <td><strong>@item.title</strong></td>
-                        <td>@item.rating</td>
-                        <td>@item.year</td>
-                        
-                        <td><a href="#" class="btn btn-outline-dark">Fragmanı İzle</a></td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-        <br />     
-        <br />
-    </div>
-    <br />
-</div> *@
-
 <table class="table table-striped">
     <tr>
         <th class="text-center">#</th>
