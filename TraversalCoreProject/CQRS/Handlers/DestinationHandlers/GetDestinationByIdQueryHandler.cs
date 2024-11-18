@@ -2,7 +2,7 @@
 using TraversalCoreProject.CQRS.Queries.DestinationQueries;
 using TraversalCoreProject.CQRS.Results.DestinationResults;
 
-namespace TraversalCoreProject.CQRS.Handlers
+namespace TraversalCoreProject.CQRS.Handlers.DestinationHandlers
 {
 	public class GetDestinationByIdQueryHandler
 	{
@@ -21,6 +21,7 @@ namespace TraversalCoreProject.CQRS.Handlers
 				Destinationid = values.DestinationId,
 				City = values.City,
 				DayNight = values.DayNight,
+				Price = values.Price,
 			};
 		}
 	}

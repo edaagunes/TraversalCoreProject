@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.IO;
+using TraversalCoreProject.CQRS.Handlers;
 using TraversalCoreProject.CQRS.Handlers.DestinationHandlers;
 using TraversalCoreProject.Models;
 
@@ -29,6 +30,12 @@ namespace TraversalCoreProject
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddScoped<GetAllDestinationQueryHandler>();
+			services.AddScoped<GetDestinationByIdQueryHandler>();
+			services.AddScoped<GetAllDestinationQueryHandler>();
+			services.AddScoped<CreateDestinationCommandHandler>();
+			services.AddScoped<DeleteDestinationCommandHandler>();
+			services.AddScoped<UpdateDestinationCommandHandler>();
+
 
 			services.AddLogging(x =>
 			{
