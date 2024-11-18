@@ -1,0 +1,49 @@
+﻿@model AccountViewModel
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h3>Unit Of Work Personel Prim Transferi</h3>
+<br />
+<form method="post">
+	<div class="form-group">
+		<label for="SenderId">Gönderici</label>
+		<br />
+		<select asp-for="SenderId" class="form-control" asp-items="ViewBag.SenderList">
+			<option value="">Seçiniz</option>
+		</select>
+	</div>
+	<br />
+	<div class="form-group">
+		<label for="ReceiverId">Alıcı</label>
+		<select asp-for="ReceiverId" class="form-control" asp-items="ViewBag.ReceiverList">
+			<option value="">Seçiniz</option>
+		</select>
+	</div>
+	<br />
+	<div class="form-group">
+		<label for="Amount">Tutar</label>
+		<input asp-for="Amount" class="form-control" />
+	</div>
+	<br />
+	<button type="submit" class="btn btn-primary">Gönder</button>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+	@if (TempData["SuccessMessage"] != null)
+	{
+		<text>
+					Swal.fire({
+						icon: 'success',
+						title: 'Başarılı!',
+						text: '@Html.Raw(TempData["SuccessMessage"])'
+					}).then((result) => {
+						// Tutar alanını temizle
+						document.querySelector('[name="Amount"]').value = ''
+					});
+		</text>
+	}
+</script>
+
