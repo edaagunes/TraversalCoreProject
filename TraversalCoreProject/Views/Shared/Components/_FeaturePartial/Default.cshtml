@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model List<Feature>
+
 <div class="best-rooms py-5">
 	<div class="container py-md-5">
 		<div class="ban-content-inf row">
@@ -19,7 +20,8 @@
 							<figcaption>
 								<div>
 									<h4>@Model[0].Name</h4>
-									<p>@Model[0].Description₺ </p>
+									<p>@Model[0].Description₺ 'den Başlayan Fiyatlarla</p>
+									<p>Sonbahar Turu</p>
 								</div>
 
 							</figcaption>
@@ -40,7 +42,7 @@
 									<figcaption>
 										<div>
 											<h4>@item.Name</h4>
-											<p>@item.Description₺ </p>
+											<p>@item.Description₺'den Başlayan Fiyatlar</p>
 										</div>
 
 									</figcaption>
