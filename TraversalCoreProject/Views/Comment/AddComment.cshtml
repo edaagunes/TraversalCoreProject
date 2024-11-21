@@ -1,26 +1,18 @@
-﻿@model Destination
+﻿@using EntityLayer.Concrete
+@model Destination
 <div class="leave-comment-form mt-5" id="reply">
 	<h4 class="side-title mb-2">Bir Yorum Bırakın</h4>
 	<p class="mb-4">
 		İşaretli alanları doldurmanız gerekli.
 	</p>
+	<h3></h3>
 	<form method="post" asp-action="AddComment" asp-controller="Comment">
-
+		 <input type="hidden" name="DestinationId" value="@ViewBag.destId" /> 
 		<div class="form-group">
 			<textarea name="CommentContent" class="form-control" placeholder="Yorumunuz" required=""
 					  spellcheck="false"></textarea>
 		</div>
-		<div class="input-grids row">
-
-			<div class="form-group col-lg-6">
-				<input type="text" name="CommentUser" class="form-control" placeholder="Adınız Soyadınız"
-					   required="">
-			</div>
-			<div class="form-group col-lg-6">
-				<input type="hidden" name="DestinationId" value="@Model.DestinationId" class="form-control" placeholder="Destinasyon Id" required="">
-			</div>
-		</div>
-
+	
 		<div class="submit text-right">
 			<button class="btn btn-style btn-primary">Yorum Yap</button>
 		</div>

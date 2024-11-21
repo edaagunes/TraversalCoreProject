@@ -1,4 +1,5 @@
-﻿@model Destination
+﻿@using EntityLayer.Concrete
+@model Destination
 @{
 	ViewData["Title"] = "DestinationDetails";
 	Layout = "~/Views/Shared/_UILayout.cshtml";
@@ -109,6 +110,7 @@
 					@await Component.InvokeAsync("_GuideDetails")
 					<!--//author-card-->
 					@await Component.InvokeAsync("_CommentListPartial", new { id = ViewBag.i })
+
 					@await Html.PartialAsync("~/Views/Comment/AddComment.cshtml")
 
 				</div>
