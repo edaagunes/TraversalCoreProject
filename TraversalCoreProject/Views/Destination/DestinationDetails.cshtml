@@ -1,5 +1,6 @@
 ﻿@using EntityLayer.Concrete
 @model Destination
+
 @{
 	ViewData["Title"] = "DestinationDetails";
 	Layout = "~/Views/Shared/_UILayout.cshtml";
@@ -27,20 +28,19 @@
 	<div class="py-5 w3l-homeblock1 text-center">
 		<div class="container mt-md-3">
 			<h3 class="blog-desc-big text-center mb-4">
-				Your Blog Posts are Boring? Here are 9 Tips for
-				Making your Writing more Interesting
+				Alanında en yetkin rehberlerimiz ile en güncel seyahat hikayelerimizi okumalısınız!
 			</h3>
 			<div class="blog-post-align">
 				<div class="blog-post-img">
-					<a href="#"><img src="/Traversal-Liberty/assets/images/c1.jpg" alt="" class="rounded-circle img-fluid" /></a>
+					<a href="#"><img src="@Model.Guide.Image" alt="" class="rounded-circle img-fluid" /></a>
 				</div>
 				<div class="blog-post-info">
 					<div class="author align-items-center mb-1">
-						<a href="#">Johnson smith</a> in <a href="#url">Traversal</a>
+						<a href="#">@Model.Guide.Name</a> in <a href="#url">@Model.Guide.Description</a>
 					</div>
 					<ul class="blog-meta">
 						<li class="meta-item blog-lesson">
-							<span class="meta-value"> June 13, 2020 </span>
+							<span class="meta-value"> @Model.DestinationDate </span>
 						</li>
 						<li class="meta-item blog-students">
 							<span class="meta-value"> 6min read</span>
