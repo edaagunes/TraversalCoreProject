@@ -8,7 +8,8 @@ namespace TraversalCoreProject.Areas.Member.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+			ViewData["PageTitle"] = "Mesajlar";
+			return View();
         }
     }
 }

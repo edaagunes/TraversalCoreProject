@@ -25,12 +25,16 @@ namespace TraversalCoreProject.Areas.Member.Controllers
 
         public async Task<IActionResult> MyCurrentReservation()
         {
+			ViewData["PageTitle"] = "Aktif Rezervasyonlar";
+
 			var values = await _userManager.FindByNameAsync(User.Identity.Name);
 			var valuesList = reservationManager.GetListWithReservationByWaitAccepted(values.Id);
 			return View(valuesList);
 		}
         public async Task<IActionResult> MyOldReservation()
         {
+			ViewData["PageTitle"] = "Geçmiş Rezervasyonlar";
+
 			var values = await _userManager.FindByNameAsync(User.Identity.Name);
 			var valuesList = reservationManager.GetListWithReservationByWaitPrevious(values.Id);
 			return View(valuesList);
@@ -38,7 +42,9 @@ namespace TraversalCoreProject.Areas.Member.Controllers
 
         public async Task<IActionResult> MyApprovalReservation()
         {
-            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+			ViewData["PageTitle"] = "Onay Bekleyen Rezervasyonlar";
+
+			var values = await _userManager.FindByNameAsync(User.Identity.Name);
             var valuesList = reservationManager.GetListWithReservationByWaitApproval(values.Id);
             return View(valuesList);
         }
@@ -46,7 +52,9 @@ namespace TraversalCoreProject.Areas.Member.Controllers
         [HttpGet]
         public IActionResult NewReservation()
         {
-            List<SelectListItem> values = (from x in destinationManager.TGetList()
+			ViewData["PageTitle"] = "Yeni Rezervasyon";
+
+			List<SelectListItem> values = (from x in destinationManager.TGetList()
                                            select new SelectListItem
                                            {
                                                Text = x.City,

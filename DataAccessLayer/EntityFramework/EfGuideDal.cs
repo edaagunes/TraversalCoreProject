@@ -2,6 +2,7 @@
 using DataAccessLayer.Concrete;
 using DataAccessLayer.Repository;
 using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,13 @@ namespace DataAccessLayer.EntityFramework
 			values.Status = false;
 			context.Update(values);
 			context.SaveChanges();
+		}
+
+		public List<Guide> GetListWithDestinations()
+		{
+			
+			return context.Guides.Include(g => g.Destinations).ToList();
+			
 		}
 	}
 }

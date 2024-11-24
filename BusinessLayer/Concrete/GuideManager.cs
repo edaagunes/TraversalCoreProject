@@ -43,9 +43,15 @@ namespace BusinessLayer.Concrete
 			return _guideDal.GetById(id);
 		}
 
+
 		public List<Guide> TGetList()
 		{
 			return _guideDal.GetList();
+		}
+
+		public List<Guide> TGetListWithDestinations()
+		{
+			return _guideDal.GetListWithDestinations();
 		}
 
 		public void TUpdate(Guide entity)

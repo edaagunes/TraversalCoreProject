@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Destination>
+
+<style>
+	.fixed-height {
+		height: 300px; /* Slider yüksekliği */
+		object-fit: cover; /* Görüntülerin düzgün kesilmesi */
+		width: 100%;
+	}
+
+	.carousel-caption {
+		position: absolute;
+		bottom: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 10;
+	}
+
+	.carousel-item img {
+		display: block;
+	}
+</style>
+
+<div class="col-xl-4 col-lg-12">
+	<div class="card">
+		<div class="card-content">
+			<div class="card-body">
+				<h4 class="card-title">Tur Anılarımız</h4>
+				<h6 class="card-subtitle text-muted">Birlikte yeni anılar biriktirelim...</h6>
+			</div>
+			<div id="carousel-area" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<ol class="carousel-indicators">
+					@for (int i = 0; i < Model.Count(); i++)
+					{
+						<li data-target="#carousel-area" data-slide-to="@i" class="@(i == 0 ? "active" : "")"></li>
+					}
+				</ol>
+
+				<!-- Slides -->
+				<div class="carousel-inner" role="listbox">
+					@for (int i = 0; i < Model.Count(); i++)
+					{
+						var item = Model.ElementAt(i);
+						<div class="carousel-item @(i == 0 ? "active" : "")">
+							<img src="@item.Image" class="d-block w-100 fixed-height" alt="Tur Resmi">
+							<div class="carousel-caption d-none d-md-block">
+								<a href="/Destination/DestinationDetails/@item.DestinationId" class="btn btn-outline-primary">Rotaya Git</a>
+							</div>
+						</div>
+					}
+				</div>
+
+				<!-- Controls -->
+				<a class="carousel-control-prev" href="#carousel-area" role="button" data-slide="prev">
+					<span class="la la-angle-left" aria-hidden="true"></span>
+					<span class="sr-only">Önceki</span>
+				</a>
+				<a class="carousel-control-next" href="#carousel-area" role="button" data-slide="next">
+					<span class="la la-angle-right icon-next" aria-hidden="true"></span>
+					<span class="sr-only">Sonraki</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="card-footer border-top-blue-grey border-top-lighten-5 text-muted">
+			<span class="float-left">
+				@DateTime.Now.ToString("dd-MMM-yyyy")
+			</span>
+			<span class="tags float-right">
+				<span class="badge badge-pill badge-primary">Kültür</span>
+				<span class="badge badge-pill badge-danger">Eğlence</span>
+				<span class="badge badge-pill badge-success">Özgürlük</span>
+			</span>
+		</div>
+
+		<div class="card-body">
+			<h4 class="card-title">Popüler Turlarımız</h4>
+			@for (int i = 0; i < Model.Count(); i++)
+			{
+				var item = Model.ElementAt(i);
+
+				if (item.DestinationId % 2 == 0)
+				{
+					<span class="badge badge-pill badge-dark">@item.City</span>
+				}
+				else
+				{
+					<span class="badge badge-pill badge-warning">@item.City</span>
+				}
+			}
+			<br /><br />
+			<br /><br />
+			<br /><br />
+
+		</div>
+	</div>
+</div>

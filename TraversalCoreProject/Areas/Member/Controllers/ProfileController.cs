@@ -22,7 +22,9 @@ namespace TraversalCoreProject.Areas.Member.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var values = await _userManager.FindByNameAsync(User.Identity.Name);
+			ViewData["PageTitle"] = "Profil";
+
+			var values = await _userManager.FindByNameAsync(User.Identity.Name);
             UserEditViewModel userEditViewModel = new UserEditViewModel();
             userEditViewModel.Name = values.Name;
             userEditViewModel.Surname = values.Surname;

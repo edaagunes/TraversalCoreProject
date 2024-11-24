@@ -1,36 +1,65 @@
 ﻿@model TraversalCoreProject.Areas.Member.Models.UserEditViewModel
 
 @{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UserLayout.cshtml";
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
 <h1>Profil Düzenleme</h1>
 
-<form method="post" enctype="multipart/form-data">
-    @Html.Label("Adınız")
-    <input type="text" asp-for="Name" class="form-control"/>
-    <br />
-    @Html.Label("Soyadınız")
-    <input type="text" asp-for="Surname" class="form-control" />
-    <br />
-    @Html.Label("Mail Adresiniz")
-    <input type="text" asp-for="Mail" class="form-control" />
-    <br />
-    @Html.Label("Şifreniz")
-    <input type="text" asp-for="Password" class="form-control" />
-    <br />
-    @Html.Label("Şifre Tekrar")
-    <input type="text" asp-for="ConfirmPassword" class="form-control" />
-    <br />
-    @Html.Label("Telefon Numarası")
-    <input type="text" asp-for="PhoneNumber" class="form-control" />
-    <br />
-    <div class="form-group">
-        <label>Fotoğraf Seçin</label>
-        <br />
-        <input type="file" asp-for="Image"/>
-    </div>
-    <br />
-    <button class="btn btn-primary">Güncelle</button>
-</form>
+
+
+<div class="row">
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">Profil Düzenleme</h4>
+				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+				<div class="heading-elements">
+					<ul class="list-inline mb-0">
+						<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+						<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+						<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+						<li><a data-action="close"><i class="ft-x"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="card-content collapse show">
+				<div class="card-body">
+					<p class="card-text">Profil bilgilerinizi güncelleyebilirsiniz.</p>
+					
+						<form method="post" enctype="multipart/form-data">
+							@Html.Label("Adınız")
+							<input type="text" asp-for="Name" class="form-control" />
+							<br />
+							@Html.Label("Soyadınız")
+							<input type="text" asp-for="Surname" class="form-control" />
+							<br />
+							@Html.Label("Mail Adresiniz")
+							<input type="text" asp-for="Mail" class="form-control" />
+							<br />
+							@Html.Label("Şifreniz")
+							<input type="text" asp-for="Password" class="form-control" />
+							<br />
+							@Html.Label("Şifre Tekrar")
+							<input type="text" asp-for="ConfirmPassword" class="form-control" />
+							<br />
+							@Html.Label("Telefon Numarası")
+							<input type="text" asp-for="PhoneNumber" class="form-control" />
+							<br />
+							<div class="form-group">
+								<label>Fotoğraf Seçin</label>
+								<br />
+								<input type="file" asp-for="Image" />
+							</div>
+							<br />
+							<button class="btn btn-primary">Güncelle</button>
+						</form>
+
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

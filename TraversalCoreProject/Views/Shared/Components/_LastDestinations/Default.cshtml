@@ -1,12 +1,33 @@
 ﻿@model List<Destination>
 
+    <style>
+    /* Tur Detayları butonlarının hizalanması */
+    .card-body .btn {
+        font-size: 14px; /* Buton metin boyutunu sabitle */
+        padding: 8px 16px; /* Buton boyutunu sabitle */
+        width: auto; /* Buton genişliğini içerik ile uyumlu hale getir */
+        margin-bottom: 0; /* Butonların altındaki boşluğu kaldır */
+    }
+
+    /* "En Son Eklenen Seyahat Rotaları" yazısından sonraki boşluğu kaldır */
+    .card-header p {
+        margin-bottom: 0; /* Başlıktan sonraki boşluğu kaldır */
+        padding-bottom: 0; /* Başlık altındaki padding'i sıfırla */
+    }
+
+    /* Card'lar arasındaki boşluğu düzenle */
+    .card-body {
+        padding-bottom: 1rem; /* İçeriğin altındaki boşluğu ayarla */
+    }
+    </style>
+
 <div class="col-12 mt-4">
     <div class="card mb-4">
         <div class="card-header pb-0 p-3">
             <h6 class="mb-1">Son Rotalar</h6>
             <p class="text-sm">En Son Eklenen Seyahat Rotaları</p>
         </div>
-        <div class="card-body p-3">
+        <div class="card-body p-0">
             <div class="row">
                 @foreach (var item in Model)
                 {
@@ -32,8 +53,7 @@
                                 <a href="/Destination/DestinationDetails/@item.DestinationId" class="btn btn-outline-primary btn-sm mb-0">Tur Detayları</a>
                                 <div class="avatar-group mt-2">
                                     <a href="/Guide/Index" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="@item.Guide.Name">
-                                     
-                                        <img alt="Image placeholder" src="@item.Guide.Image" style="width:50px;height:50px">
+                                        <img alt="Image placeholder" src="@item.Guide.Image" style="width:100px;height:50px !important">
                                     </a>
                                 </div>
                             </div>

@@ -11,5 +11,7 @@ namespace DataAccessLayer.Abstract
     {
         void ChangeToActiveByGuide(int id);
         void ChangeToPassiveByGuide(int id);
-    }
+
+        List<Guide> GetListWithDestinations();
+	}
 }

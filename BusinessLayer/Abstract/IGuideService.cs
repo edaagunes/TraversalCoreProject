@@ -11,6 +11,6 @@ namespace BusinessLayer.Abstract
     {
 		void TChangeToActiveByGuide(int id);
 		void TChangeToPassiveByGuide(int id);
-
+		public List<Guide> TGetListWithDestinations();
 	}
 }

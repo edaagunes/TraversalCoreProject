@@ -10,7 +10,9 @@ namespace TraversalCoreProject.Areas.Member.Controllers
 		[Route("Member/[controller]/[action]/{id?}")]
 		public IActionResult Index()
         {
-            return View();
+			ViewData["PageTitle"] = "Yorumlar";
+
+			return View();
         }
     }
 }
