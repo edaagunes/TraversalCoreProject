@@ -66,7 +66,13 @@ namespace TraversalCoreProject
 				var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
 				config.Filters.Add(new AuthorizeFilter(policy));
 			});
+
 			services.AddMvc();
+
+			services.ConfigureApplicationCookie(options =>
+			{
+				options.LoginPath = "/Login/SignIn/";
+			});
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -109,13 +115,7 @@ namespace TraversalCoreProject
 				);
 			});
 
-			app.UseEndpoints(endpoints =>
-			{
-				endpoints.MapControllerRoute(
-				  name: "areas",
-				  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-				);
-			});
+			
 
 		}
 	}
