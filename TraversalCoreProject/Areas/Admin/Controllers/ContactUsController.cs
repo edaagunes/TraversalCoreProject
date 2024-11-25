@@ -19,5 +19,18 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
 			var values = _contactUsService.TGetListByContactUsTrue();
 			return View(values);
 		}
+
+		public IActionResult DeleteMessage(int id)
+		{
+			var values=_contactUsService.TGetById(id);
+			_contactUsService.TDelete(values);
+			return RedirectToAction("Index");
+		}
+
+		public IActionResult DetailMessage(int id)
+		{
+			var values = _contactUsService.TGetById(id);
+			return View(values);
+		}
 	}
 }

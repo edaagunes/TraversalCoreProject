@@ -1,0 +1,86 @@
+﻿@model ContactUs
+@{
+    ViewData["Title"] = "DetailMessage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <h5 class="card-header">Mesaj Detayları</h5>
+    <br />
+    <div class="card-body">
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <strong>Gönderen:</strong>
+            </div>
+            <div class="col-md-9">
+                <p>@Model.Name</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <strong>Konu:</strong>
+            </div>
+            <div class="col-md-9">
+                <p>@Model.Subject</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <strong>Gönderilme Tarihi:</strong>
+            </div>
+            <div class="col-md-9">
+                <p>@(((DateTime)Model.MessageDate).ToString("dd-MMM-yyyy"))</p>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <strong>Mesaj:</strong>
+            </div>
+            <div class="col-md-9">
+                <div class="message-box">
+                    @Model.MessageBody
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-end">
+        <a href="/Admin/ContactUs/Index" class="btn btn-outline-primary">Geri Dön</a>
+    </div>
+</div>
+
+<style>
+    .card-header {
+        background-color: #89ff;
+        color: white;
+        font-weight: bold;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .message-box {
+        background-color: #f8f9fa;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+        white-space: pre-wrap; /* Mesajın satırlarını böler */
+        word-wrap: break-word;
+        text-align: left; /* İçerik sola hizalanacak */
+    }
+
+    .row.mb-3 {
+        margin-bottom: 1.5rem;
+    }
+
+    .col-md-3 {
+        font-weight: bold;
+    }
+
+    .card-footer {
+        background-color: #f1f1f1;
+    }
+</style>

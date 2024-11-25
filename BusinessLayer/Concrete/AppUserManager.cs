@@ -25,7 +25,7 @@ namespace BusinessLayer.Concrete
 
 		public void TDelete(AppUser entity)
 		{
-			throw new NotImplementedException();
+			_appUserDal.Delete(entity);
 		}
 
 		public AppUser TGetById(int id)
@@ -40,7 +40,7 @@ namespace BusinessLayer.Concrete
 
 		public void TUpdate(AppUser entity)
 		{
-			throw new NotImplementedException();
+			_appUserDal.Update(entity);
 		}
 	}
 }

@@ -12,6 +12,22 @@ namespace DataAccessLayer.EntityFramework
 {
     public class EfFeatureDal : GenericRepository<Feature>, IFeatureDal
     {
+		Context context = new Context();
+		public void ChangeToActiveByFeature(int id)
+		{
+			var values = context.Features.Find(id);
+			values.Status = true;
+			context.Update(values);
+			context.SaveChanges();
+		}
 
-    }
+		public void ChangeToPassiveByFeature(int id)
+		{
+			var values = context.Features.Find(id);
+			values.Status = false;
+			context.Update(values);
+			context.SaveChanges();
+		}
+
+	}
 }

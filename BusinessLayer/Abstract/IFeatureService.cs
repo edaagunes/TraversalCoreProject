@@ -9,5 +9,7 @@ namespace BusinessLayer.Abstract
 {
     public interface IFeatureService : IGenericService<Feature>
     {
-    }
+		void TChangeToActiveByFeature(int id);
+		void TChangeToPassiveByFeature(int id);
+	}
 }

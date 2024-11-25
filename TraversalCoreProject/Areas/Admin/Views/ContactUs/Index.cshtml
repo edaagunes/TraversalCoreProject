@@ -15,9 +15,8 @@
 					<th>Gönderen</th>
 					<th>Konu</th>
 					<th>Tarİh</th>
-					<th>Sİl</th>
-					<th>Durum</th>
-					<th>Detaylar</th>
+					<th></th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -25,11 +24,10 @@
 				{
 					count++;
 					<tr>
-						<th>@count</th>
+						<td>@count</td>
 						<td>@item.Name</td>
 						<td><strong>@item.Subject</strong></td>
-						<td>@(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>
-						<td>@item.MessageStatus</td>
+						<td>@(((DateTime)item.MessageDate).ToString("dd-MMM-yyyy"))</td>					
 						<td><a href="/Admin/ContactUs/DeleteMessage/@item.ContactUsId" class="btn btn-outline-danger">Sil</a></td>
 						<td><a href="/Admin/ContactUs/DetailMessage/@item.ContactUsId" class="btn btn-outline-secondary">Mesajı Aç</a></td>
 					</tr>

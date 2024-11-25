@@ -11,11 +11,13 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
 	{
 		private readonly IAppUserService _userService;
 		private readonly IReservationService _reservationService;
+		private readonly ICommentService _commentService;
 
-		public UserController(IAppUserService userService, IReservationService reservationService)
+		public UserController(IAppUserService userService, IReservationService reservationService, ICommentService commentService)
 		{
 			_userService = userService;
 			_reservationService = reservationService;
+			_commentService = commentService;
 		}
 
 		public IActionResult Index()
@@ -38,13 +40,28 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
 		[HttpPost]
 		public IActionResult EditUser(AppUser appUser)
 		{
-			_userService.TUpdate(appUser);
+			var existingUser = _userService.TGetById(appUser.Id);
+			if (existingUser == null)
+			{
+				return NotFound("Kullanıcı bulunamadı.");
+			}
+
+			// Mevcut kullanıcı bilgilerini güncelle
+			existingUser.Name = appUser.Name;
+			existingUser.Surname = appUser.Surname;
+			existingUser.UserName = appUser.UserName;
+			existingUser.Email = appUser.Email;
+
+			_userService.TUpdate(existingUser);
 			return RedirectToAction("Index");
 		}
 		public IActionResult CommentUser(int id)
 		{
-			_userService.TGetList();
-			return View();
+			var existingUser = _userService.TGetById(id);
+			ViewBag.user=existingUser.Name +" "+ existingUser.Surname;
+
+			var values=_commentService.TGetListCommentWithUser(id);
+			return View(values);
 		}
 		public IActionResult ReservationUser(int id)
 		{

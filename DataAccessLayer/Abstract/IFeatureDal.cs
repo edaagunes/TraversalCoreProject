@@ -9,5 +9,8 @@ namespace DataAccessLayer.Abstract
 {
     public interface IFeatureDal : IGenericDal<Feature>
     {
-    }
+		void ChangeToActiveByFeature(int id);
+		void ChangeToPassiveByFeature(int id);
+
+	}
 }

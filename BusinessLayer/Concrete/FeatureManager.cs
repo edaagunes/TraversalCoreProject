@@ -23,6 +23,16 @@ namespace BusinessLayer.Concrete
 			throw new NotImplementedException();
 		}
 
+		public void TChangeToActiveByFeature(int id)
+		{
+			_featureDal.ChangeToActiveByFeature(id);
+		}
+
+		public void TChangeToPassiveByFeature(int id)
+		{
+			_featureDal.ChangeToPassiveByFeature(id);
+		}
+
 		public void TDelete(Feature entity)
 		{
 			throw new NotImplementedException();
@@ -30,7 +40,7 @@ namespace BusinessLayer.Concrete
 
 		public Feature TGetById(int id)
 		{
-			throw new NotImplementedException();
+			return _featureDal.GetById(id);
 		}
 
 		public List<Feature> TGetList()

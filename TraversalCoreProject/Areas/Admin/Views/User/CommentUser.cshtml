@@ -1,0 +1,65 @@
+﻿@model List<Comment>
+@{
+    ViewData["Title"] = "CommentUser";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <h5 class="card-header">Kullanıcının Rotalara Yaptığı Yorumlar</h5>
+    <div class="table-responsive text-nowrap">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Ad Soyad</th>
+                    <th>Tur Rotası</th>
+                    <th>Yorum</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td>@ViewBag.user</td>
+                        <td><strong>@item.Destination.City</strong></td>
+                        <td>
+                            <div class="comment-box">
+                                @item.CommentContent
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .comment-box {
+        width: 500px; /* Sabit genişlik */
+        max-width: 100%; /* Sayfa genişliğiyle sınırlı */
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+        font-size: 14px;
+        line-height: 1.6;
+        overflow-wrap: break-word; /* Kelimeleri kutuya göre sar */
+        word-wrap: break-word; /* Eski tarayıcılar için uyum */
+        white-space: normal; /* Satır kaymalarını sağlar */
+        min-height: 50px; /* Minumum yükseklik */
+    }
+
+    .card-header {
+        background-color: #8789ff;
+        color: white;
+        font-weight: bold;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+</style>
