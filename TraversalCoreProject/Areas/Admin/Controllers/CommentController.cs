@@ -3,6 +3,7 @@ using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace TraversalCoreProject.Areas.Admin.Controllers
 {
@@ -27,6 +28,12 @@ namespace TraversalCoreProject.Areas.Admin.Controllers
 			var values = _commentService.TGetById(id);
 			_commentService.TDelete(values);
 			return RedirectToAction("Index", "Comment", new { area = "Admin" });
+		}
+
+		public IActionResult DetailComment(int id)
+		{
+			var values=_commentService.TGetComment(id);
+			return View(values);
 		}
 	}
 }

@@ -1,0 +1,40 @@
+﻿@model Comment
+@{
+    ViewData["Title"] = "DetailComment";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="card">
+    <h5 class="card-header">Yorum Detayı</h5>
+    <div class="card-body">
+        <input type="hidden" asp-for="CommentId"/>
+        <input type="hidden" asp-for="AppUserId"/>
+        <input type="hidden" asp-for="DestinationId"/>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <h6 class="text-muted">Kullanıcı:</h6>
+                <p>@Model.AppUser.Name @Model.AppUser.Surname</p>
+            </div>
+            <div class="col-md-6">
+                <h6 class="text-muted">Tarih:</h6>
+                <p>@(((DateTime)Model.CommentDate).ToString("dd-MMM-yyyy"))</p>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <h6 class="text-muted">Destinasyon:</h6>
+                <p>@Model.Destination.City</p>
+            </div>
+            <div class="col-md-6">
+                <h6 class="text-muted">Mesaj İçeriği:</h6>
+                <p>@Model.CommentContent</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12 text-end">
+                <a href="/Admin/Comment/Index" class="btn btn-secondary">Geri Dön</a>
+            </div>
+        </div>
+    </div>
+</div>
+
