@@ -9,5 +9,8 @@ namespace BusinessLayer.Abstract
 {
     public interface ITestimonialService : IGenericService<Testimonial>
     {
-    }
+        void TChangeToActiveByTestimonial(int id);
+		void TChangeToPassiveByTestimonial(int id);
+
+	}
 }

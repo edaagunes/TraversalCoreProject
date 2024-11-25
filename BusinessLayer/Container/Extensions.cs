@@ -55,6 +55,10 @@ namespace BusinessLayer.Container
 			services.AddScoped<IFeatureService, FeatureManager>();
 			services.AddScoped<IFeatureDal, EfFeatureDal>();
 
+			services.AddScoped<ITestimonialService, TestimonialManager>();
+			services.AddScoped<ITestimonialDal, EfTestimonialDal>();
+
+
 			services.AddScoped<IUowDal,UowDal>();
 		}
 

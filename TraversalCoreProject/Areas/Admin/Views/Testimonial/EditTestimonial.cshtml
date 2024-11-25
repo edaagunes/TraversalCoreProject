@@ -1,0 +1,29 @@
+﻿@model Testimonial
+@{
+    ViewData["Title"] = "EditTestimonial";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Referans Bilgilerini Güncelleme Sayfası</h1>
+
+<form method="post">
+	@Html.HiddenFor(x => x.TestimonialId)
+	<div class="form-group">
+		@Html.Label("Referans Adı")
+		<input type="text" asp-for="Client" class="form-control" />
+	</div>
+	<br />
+	<div class="form-group">
+		@Html.Label("Yorum")
+		<textarea cols="30" rows="3" asp-for="Comment" class="form-control"> </textarea>
+	</div>
+	<br />
+	<div class="form-group">
+		@Html.Label("Görsel")
+		<input type="text" asp-for="Image" class="form-control" />
+	</div>
+	<br />
+	<button type="submit" class="btn btn-outline-primary">Güncelle</button>
+</form>
+
+

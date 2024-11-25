@@ -1,0 +1,65 @@
+﻿@model List<Testimonial>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
+}
+
+<div class="card">
+    <h5 class="card-header">Öne Çıkan Rotalar Listesi</h5>
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th></th>
+                    <th>Referans</th>
+                    <th>Açıklama</th>                 
+                    <th>Durum</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <tr>
+                        <td>@count</td>
+                        <td>
+                            <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                                <li data-bs-toggle="tooltip"
+                                    data-popup="tooltip-custom"
+                                    data-bs-placement="top"
+                                    class="avatar avatar-md pull-up"
+                                    title="">
+                                    <img src="@item.Image" alt="Avatar" class="rounded-circle" />
+                                </li>
+                            </ul>
+                        </td>
+                        <td>@item.Client</td>
+                        <td>@item.Comment.Substring(0,10)...</td>
+                        @{
+                            if (item.Status == true)
+                            {
+                                <td><a href="/Admin/Testimonial/ChangeToPassive/@item.TestimonialId" class="btn btn-outline-success">Pasif Yap</a></td>
+                            }
+                            else
+                            {
+                                <td><a href="/Admin/Testimonial/ChangeToActive/@item.TestimonialId" class="btn btn-outline-secondary">Aktif Yap</a></td>
+                            }
+                        }                     
+                        <td><a href="/Admin/Testimonial/EditTestimonial/@item.TestimonialId" class="btn btn-outline-warning">Güncelle</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+       
+        <br />
+        <br />
+        <a href="/Admin/Testimonial/AddTestimonial/" class="btn btn-outline-primary" style="margin-left:10px">Yeni Referans Ekle</a>
+    </div>
+   
+    <br />
+</div>
+
+
+

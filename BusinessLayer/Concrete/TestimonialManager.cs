@@ -20,7 +20,17 @@ namespace BusinessLayer.Concrete
 
 		public void TAdd(Testimonial entity)
 		{
-			throw new NotImplementedException();
+			_testimonialDal.Insert(entity);
+		}
+
+		public void TChangeToActiveByTestimonial(int id)
+		{
+			_testimonialDal.ChangeToActiveByTestimonial(id);
+		}
+
+		public void TChangeToPassiveByTestimonial(int id)
+		{
+			_testimonialDal.ChangeToPassiveByTestimonial(id);
 		}
 
 		public void TDelete(Testimonial entity)
@@ -30,7 +40,7 @@ namespace BusinessLayer.Concrete
 
 		public Testimonial TGetById(int id)
 		{
-			throw new NotImplementedException();
+			return _testimonialDal.GetById(id);
 		}
 
 		public List<Testimonial> TGetList()
@@ -40,7 +50,7 @@ namespace BusinessLayer.Concrete
 
 		public void TUpdate(Testimonial entity)
 		{
-			throw new NotImplementedException();
+			_testimonialDal.Update(entity);
 		}
 	}
 }
