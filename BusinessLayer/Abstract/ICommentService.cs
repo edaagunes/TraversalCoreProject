@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace BusinessLayer.Abstract
 {
-    public interface ICommentService : IGenericService<Comment>
-    {
-        List<Comment> TGetListCommentWithDestination();
+	public interface ICommentService : IGenericService<Comment>
+	{
+		List<Comment> TGetListCommentWithDestination();
 		public List<Comment> TGetListCommentWithDestinationAndUser(int id);
+		List<Comment> TGetListCommentWithUser(int userId);  // Kullanıcıya göre yorumları al
 	}
 }

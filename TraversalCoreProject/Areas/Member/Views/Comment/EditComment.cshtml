@@ -1,0 +1,26 @@
+﻿@model Comment
+@{
+    ViewData["Title"] = "EditComment";
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+}
+
+<h1>Yeni Rehber Oluşturma Sayfası</h1>
+<br />
+<form method="post">
+	<input type="hidden" asp-for="CommentId"/>
+	<input type="hidden" asp-for="DestinationId"/>
+	<input type="hidden" asp-for="AppUserId"/>
+	<div class="form-group">
+		<div class="form-group">
+			@* @Html.Label("Tur Rotası") *@
+			<input type="text" class="form-control" asp-for="Destination.City" readonly />
+		</div>
+		<br />
+		<br />
+		@Html.Label("Yorumunuz")
+		<textarea type="text" rows="3" asp-for="CommentContent" class="form-control"></textarea>
+	</div>
+	<br />
+	<button type="submit" class="btn btn-outline-primary">Güncelle</button>
+</form>
+

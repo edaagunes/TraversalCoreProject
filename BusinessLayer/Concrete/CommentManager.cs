@@ -45,7 +45,7 @@ namespace BusinessLayer.Concrete
 
         public void TUpdate(Comment entity)
         {
-            throw new NotImplementedException();
+           _commentDal.Update(entity);
         }
 
 		public List<Comment> TGetListCommentWithDestination()
@@ -57,5 +57,10 @@ namespace BusinessLayer.Concrete
         {
             return _commentDal.GetListCommentWithDestinationAndUser(id);
         }
+
+		public List<Comment> TGetListCommentWithUser(int userId)
+		{
+            return _commentDal.GetListCommentWithUser(userId);
+		}
 	}
 }
