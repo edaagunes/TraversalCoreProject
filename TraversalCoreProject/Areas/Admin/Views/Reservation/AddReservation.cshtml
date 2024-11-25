@@ -1,0 +1,55 @@
+﻿@model Reservation
+@{
+    ViewData["Title"] = "AddReservation";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Yeni Rezervasyon Oluşturma Sayfası</h1>
+<br />
+<form method="post">
+    <div class="form-group">
+        @Html.Label("Misafir Seçimi")
+        @Html.DropDownList("AppUserId", ViewBag.Guests as List<SelectListItem>, "Lütfen bir misafir seçiniz", new { @class = "form-control" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Tur Rotası Seçimi")
+        @Html.DropDownList("DestinationId", ViewBag.Destinations as List<SelectListItem>, "Lütfen bir tur rotası seçiniz", new { @class = "form-control", id = "destinationSelect" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Kişi Sayısı")
+        <input type="text" asp-for="PersonCount" class="form-control" />
+    </div>
+    <br />
+    @* <div class="form-group">
+        @Html.Label("Fiyat")
+        <input type="text" id="price" class="form-control" disabled />
+    </div>
+    <div class="form-group">
+        @Html.Label("Kapasite")
+        <input type="text" id="capacity" class="form-control" disabled />
+    </div> *@
+    <br />
+    <div class="form-group">
+        @Html.Label("Tarih")
+        <input type="date" asp-for="ReservationDate" class="form-control" />
+        @Html.ValidationMessageFor(m => m.ReservationDate, "", new { @class = "text-danger" })
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.Label("Açıklama")
+        <textarea cols="30" rows="3" asp-for="Description" class="form-control"> </textarea>
+    </div>
+    <br />
+    <button type="submit" class="btn btn-outline-primary">Oluştur</button>
+</form>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+

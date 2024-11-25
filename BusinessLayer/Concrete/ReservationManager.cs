@@ -18,6 +18,11 @@ namespace BusinessLayer.Concrete
             _reservationDal = reservationDal;
         }
 
+		public List<Reservation> GetListWithReservationByCancel(int id)
+		{
+			return _reservationDal.GetListWithReservationByCancel(id);
+		}
+
 		public List<Reservation> GetListWithReservationByWaitAccepted(int id)
 		{
 			return _reservationDal.GetListWithReservationByWaitAccepted(id);
@@ -50,10 +55,20 @@ namespace BusinessLayer.Concrete
 
         public List<Reservation> TGetList()
         {
-            throw new NotImplementedException();
+            return _reservationDal.GetList();
         }
 
-        public void TUpdate(Reservation entity)
+		public List<Reservation> TGetReservations()
+		{
+			return _reservationDal.GetReservations();
+		}
+
+		public void TSetReservationStatus(int reservationId, string status)
+		{
+			_reservationDal.SetReservationStatus(reservationId, status);
+		}
+
+		public void TUpdate(Reservation entity)
         {
             throw new NotImplementedException();
         }

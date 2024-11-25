@@ -12,5 +12,8 @@ namespace BusinessLayer.Abstract
         List<Reservation> GetListWithReservationByWaitApproval(int id);
         List<Reservation> GetListWithReservationByWaitAccepted(int id);
         List<Reservation> GetListWithReservationByWaitPrevious(int id);
-    }
+		List<Reservation> GetListWithReservationByCancel(int id);
+        void TSetReservationStatus(int reservationId, string status);
+		public List<Reservation> TGetReservations();
+	}
 }

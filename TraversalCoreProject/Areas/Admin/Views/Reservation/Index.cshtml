@@ -1,0 +1,102 @@
+﻿@model List<Reservation>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_AdminLayout.cshtml";
+	int count = 0;
+}
+
+<style>
+    .badge-warning {
+        background-color: #ffc107; /* Sarı arka plan */
+        color: #fff; /* Siyah yazı */
+    }
+
+    .badge-success {
+        background-color: #28a745; /* Yeşil arka plan */
+        color: #fff; /* Beyaz yazı */
+    }
+
+    .badge-danger {
+        background-color: #dc3545; /* Kırmızı arka plan */
+        color: #fff; /* Beyaz yazı */
+    }
+
+    .badge-secondary {
+        background-color: #6c757d; /* Gri arka plan */
+        color: #fff; /* Beyaz yazı */
+    }
+
+    .badge-primary {
+        background-color: #8789ff; 
+        color: #fff; 
+    }
+
+</style>
+
+<div class="card">
+    <h5 class="card-header">Rezervasyonlar</h5>
+    <div class="table-responsive text-nowrap">
+        <table class="table">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Misafir</th>
+                    <th>Tur Rotası</th>
+                    <th>Fiyat</th>
+                    <th>Kapasite</th>
+                    <th>Durum</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+                @foreach (var item in Model)
+                {
+                     count++;
+                    <tr>
+                        <td>@count</td>
+                        <td>@item.AppUser.Name @item.AppUser.Surname</td>
+                        <td>@item.Destination.City</td>
+                        <td>@item.Destination.Price₺</td>
+                        <td>@item.Destination.Capacity</td>
+
+                        <td>
+                            @if (item.Status == "Onay Bekliyor")
+                            {
+                                <span class="badge badge-warning">Onay Bekliyor</span>
+                            }
+                            else if (item.Status == "Onaylandı")
+                            {
+                                <span class="badge badge-primary">Onaylandı</span>
+                            }
+                            else if (item.Status == "İptal Edildi")
+                            {
+                                <span class="badge badge-danger">İptal Edildi</span>
+                            }
+                            else if (item.Status == "Geçmiş Rezervasyon")
+                            {
+                                <span class="badge badge-secondary">Geçmiş Rezervasyon</span>
+                            }
+                            else
+                            {
+                                <span class="badge badge-success">Yeni Rezervasyon</span>
+                            }
+                        </td>
+                       
+                       
+                        <td>
+                            <a href="/Admin/Reservation/ApproveReservation/@item.ReservationId" class="btn btn-outline-success">Onayla</a>
+                            <a href="/Admin/Reservation/PendingReservation/@item.ReservationId" class="btn btn-outline-warning">Beklet</a>
+                            <a href="/Admin/Reservation/CancelReservation/@item.ReservationId" class="btn btn-outline-danger">İptal Et</a>
+                            <a href="/Admin/Reservation/OldReservation/@item.ReservationId" class="btn btn-outline-secondary">Geçmiş</a>
+                            <a href="/Destination/DestinationDetails/@item.DestinationId" class="btn btn-outline-info">Sitede Gör</a>
+                        </td>  
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <a href="/Admin/Reservation/AddReservation" class="btn btn-outline-primary" style="margin-left:10px">Yeni Rezervasyon Oluştur</a>
+        <br />
+    </div>
+    <br />
+</div>
