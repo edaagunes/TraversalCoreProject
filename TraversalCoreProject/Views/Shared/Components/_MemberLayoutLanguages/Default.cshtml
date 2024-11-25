@@ -1,8 +1,25 @@
-﻿<ul class="nav navbar-nav float-right">
-    <li class="dropdown dropdown-language nav-item">
-        <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="flag-icon flag-icon-us"></i><span class="selected-language"></span></a>
-        <div class="dropdown-menu" aria-labelledby="dropdown-flag">
-            <div class="arrow_box"><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-us"></i> English</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-cn"></i> Chinese</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-ru"></i> Russian</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-fr"></i> French</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-es"></i> Spanish</a><a class="dropdown-item" href="#"><i class="flag-icon flag-icon-tr"></i> Turkish</a></div>
-        </div>
-    </li>
+﻿@using System.Globalization
+
+<ul class="nav navbar-nav float-right">
+	<li class="dropdown dropdown-language nav-item">
+		<a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<i class="flag-icon @(CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "en" ? "flag-icon-gb" : $"flag-icon-{CultureInfo.CurrentCulture.TwoLetterISOLanguageName}")"></i>
+			<span class="selected-language"></span>
+		</a>
+
+		<div class="dropdown-menu" aria-labelledby="dropdown-flag">
+			<div class="arrow_box">
+				<a class="dropdown-item" href="#" onclick="setLanguage('tr')"><i class="flag-icon flag-icon-tr"></i> Turkish</a>
+				<a class="dropdown-item" href="#" onclick="setLanguage('en')"><i class="flag-icon flag-icon-gb"></i> English</a>
+				<a class="dropdown-item" href="#" onclick="setLanguage('fr')"><i class="flag-icon flag-icon-fr"></i> French</a>
+			</div>
+		</div>
+	</li>
 </ul>
+
+<script>
+	function setLanguage(culture) {
+		document.cookie = `culture=${culture}; path=/; expires=${new Date(new Date().getTime() + 365 * 24 * 60 * 60 * 1000).toUTCString()}`;
+		location.reload(); // Sayfayı yeniden yükle
+	}
+</script>

@@ -1,12 +1,29 @@
-﻿
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer
 @{
     ViewData["Title"] = "MemberDashboard";
-    Layout = null;
+    Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
 
+    .vertical-layout.vertical-menu .app-content {
+        margin-left: 250px; /* Sidebar genişliğine eşit */
+    }
+
+    .menu-fixed {
+        width: 250px;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+</style>
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>
+    @await Component.InvokeAsync("_MemberLayoutHead")
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
@@ -49,11 +66,8 @@
         </div>
     </nav>
 
-    @await Component.InvokeAsync("_MemberLayoutSideBar")
-
-    <div class="app-content content">
         <div class="content-wrapper">
-            <div class="content-wrapper-before"></div>
+            <div class="content-wrapper-before"></div>     
             <div class="content-header row">
             </div>
             <div class="content-body">
@@ -71,7 +85,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-12">
                         <div class="card pull-up ecom-card-1 bg-white">
                             <div class="card-content ecom-card2 height-180">
-                                <h5 class="text-muted danger position-absolute p-1">Progress Stats</h5>
+                                <h5 class="text-muted danger position-absolute p-1">Yeni Misafir Katılımı</h5>
                                 <div>
                                     <i class="ft-pie-chart danger font-large-1 float-right p-1"></i>
                                 </div>
@@ -85,7 +99,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-12">
                         <div class="card pull-up ecom-card-1 bg-white">
                             <div class="card-content ecom-card2 height-180">
-                                <h5 class="text-muted info position-absolute p-1">Activity Stats</h5>
+                                <h5 class="text-muted info position-absolute p-1">Aktif Tur Yoğunluğu</h5>
                                 <div>
                                     <i class="ft-activity info font-large-1 float-right p-1"></i>
                                 </div>
@@ -99,7 +113,7 @@
                     <div class="col-xl-4 col-lg-12">
                         <div class="card pull-up ecom-card-1 bg-white">
                             <div class="card-content ecom-card2 height-180">
-                                <h5 class="text-muted warning position-absolute p-1">Sales Stats</h5>
+                                <h5 class="text-muted warning position-absolute p-1">Tur Satışları</h5>
                                 <div>
                                     <i class="ft-shopping-cart warning font-large-1 float-right p-1"></i>
                                 </div>
@@ -123,9 +137,9 @@
                
             </div>
         </div>
-    </div>
+ 
     <!-- ////////////////////////////////////////////////////////////////////////////-->
-    @await Component.InvokeAsync("_MemberLayoutFooter")
+ 
 
     <!-- BEGIN VENDOR JS-->
     <script src="~/member/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
@@ -139,6 +153,17 @@
     <!-- END CHAMELEON  JS-->
     <!-- BEGIN PAGE LEVEL JS-->
     <script src="~/member/theme-assets/js/scripts/pages/dashboard-lite.js" type="text/javascript"></script>
+    <!-- END PAGE LEVEL JS-->
+    <!-- BEGIN VENDOR JS-->
+    <script src="~/member/theme-assets/vendors/js/vendors.min.js" type="text/javascript"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN CHAMELEON  JS-->
+    <script src="~/member/theme-assets/js/core/app-menu-lite.js" type="text/javascript"></script>
+    <script src="~/member/theme-assets/js/core/app-lite.js" type="text/javascript"></script>
+    <!-- END CHAMELEON  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
     <!-- END PAGE LEVEL JS-->
 </body>
 </html>

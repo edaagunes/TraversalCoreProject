@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -67,7 +68,12 @@ namespace TraversalCoreProject
 				config.Filters.Add(new AuthorizeFilter(policy));
 			});
 
-			services.AddMvc();
+			services.AddLocalization(opt =>
+			{
+				opt.ResourcesPath = "Resources";
+			});
+
+			services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 
 			services.ConfigureApplicationCookie(options =>
 			{
@@ -99,6 +105,22 @@ namespace TraversalCoreProject
 			app.UseRouting();
 
 			app.UseAuthorization();
+
+			var suppotedCultures = new[] { "en", "fr", "es", "gr", "tr", "de" };
+			var localizationOptions=new RequestLocalizationOptions().SetDefaultCulture(suppotedCultures[4]).AddSupportedCultures(suppotedCultures).AddSupportedUICultures(suppotedCultures);
+			app.UseRequestLocalization(localizationOptions);
+
+			app.Use(async (context, next) =>
+			{
+				var cultureQuery = context.Request.Cookies["culture"];
+				if (!string.IsNullOrEmpty(cultureQuery))
+				{
+					var culture = new System.Globalization.CultureInfo(cultureQuery);
+					System.Globalization.CultureInfo.CurrentCulture = culture;
+					System.Globalization.CultureInfo.CurrentUICulture = culture;
+				}
+				await next();
+			});
 
 			app.UseEndpoints(endpoints =>
 			{

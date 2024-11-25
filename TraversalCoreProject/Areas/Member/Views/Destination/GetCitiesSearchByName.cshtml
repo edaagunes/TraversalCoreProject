@@ -1,0 +1,97 @@
+﻿@using EntityLayer.Concrete
+@model List<Destination>
+@{
+	ViewData["Title"] = "GetCitiesSearchByName";
+	Layout = "~/Views/Shared/_MemberLayout.cshtml";
+	int count = 0;
+}
+
+
+<div class="row">
+	<div class="col-12">
+		<div class="card mb-4">
+			<div class="card-header">
+				<h4 class="card-title">Tur Rotası Arama Sayfası</h4>
+				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+				<div class="heading-elements">
+					<ul class="list-inline mb-0">
+						<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+						<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+						<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+						<li><a data-action="close"><i class="ft-x"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="card-content collapse show">
+				<div class="card-body px-0 pt-0 pb-2">
+					<form asp-action="GetCitiesSearchByName" method="get" asp-area="Member" class="d-flex justify-content-center mb-4">
+						<div class="input-group w-50">
+							<input type="text"
+								   class="form-control rounded-3"
+								   name="searchString"
+								   placeholder="Şehir Ara"
+								   value="@ViewData["CurrentFilter"]">
+							<button class="btn btn-outline-dark rounded-3" type="submit">Ara</button>
+						</div>
+					</form>
+
+
+					<div class="table-responsive p-0">
+						<table class="table align-items-center mb-0">
+							<thead>
+								<tr>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Şehİr</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Süre</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kapasİte</th>
+									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Fİyat</th>
+									<th class="text-secondary opacity-7"></th>
+								</tr>
+							</thead>
+							<tbody>
+								@foreach (var item in Model)
+								{
+									count++;
+									<tr>
+										<td class="align-middle text-center text-sm">
+											<p class="text-xs text-secondary mb-0">@count</p>
+										</td>
+
+										<td class="align-middle text-center text-sm">
+											<img src="@item.Image" class="avatar avatar-md mb-0" style="width:100px;height:60px" alt="user1">
+										</td>
+
+										<td class="align-middle text-center text-sm">
+											<p class="text-xs font-weight-bold mb-0">@item.City</p>
+										</td>
+
+										<td class="align-middle text-center text-sm">
+											<p class="text-xs font-weight-bold mb-0">@item.DayNight</p>
+										</td>
+
+										<td class="align-middle text-center text-sm">
+											<p class="text-xs text-secondary mb-0">@item.Capacity</p>
+										</td>
+
+										<td class="align-middle text-center">
+											<span class="text-secondary text-xs font-weight-bold">@item.Price ₺</span>
+										</td>
+
+										<td class="align-middle">
+											<a href="/Destination/DestinationDetails/@item.DestinationId" class="btn btn-primary xs">
+												Detaylar
+											</a>
+										</td>
+									</tr>
+								}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
