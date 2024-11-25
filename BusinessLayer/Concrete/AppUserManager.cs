@@ -30,7 +30,7 @@ namespace BusinessLayer.Concrete
 
 		public AppUser TGetById(int id)
 		{
-			throw new NotImplementedException();
+			return _appUserDal.GetById(id);
 		}
 
 		public List<AppUser> TGetList()
