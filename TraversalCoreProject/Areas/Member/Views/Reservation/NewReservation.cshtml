@@ -1,113 +1,113 @@
 ﻿@model EntityLayer.Concrete.Reservation
 @{
-    ViewData["Title"] = "NewReservation";
-    Layout = "~/Views/Shared/_MemberLayout.cshtml";
+	ViewData["Title"] = "NewReservation";
+	Layout = "~/Views/Shared/_MemberLayout.cshtml";
 }
 
 <div class="row">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Yeni Rezervasyon Ekleme Sayfası</h4>
-                <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
-                <div class="heading-elements">
-                    <ul class="list-inline mb-0">
-                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
-                        <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
-                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                        <li><a data-action="close"><i class="ft-x"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-                 
-                <div class="card-content collapse show">
-                    <div class="card-body">
-                        <p class="card-text"></p>
-                    <form method="post">
-                        <div class="form-group">
-                            @*  @Html.Label("Lokasyon")
-        @Html.DropDownListFor(x => x.Destination, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", id = "destination" }) *@
-                        </div>
-                        <div class="form-group">
-                            @Html.Label("Kişi Sayısı")
-                            <input type="text" asp-for="PersonCount" class="form-control" id="personcount" />
-                        </div>
-                        <div class="form-group">
-                            @Html.Label("Tarih")
-                            <input type="date" asp-for="ReservationDate" class="form-control" id="restime" />
-                        </div>
-                        <div class="form-group">
-                            @Html.Label("Notunuz")
-                            <input type="text" asp-for="Description" class="form-control" id="description" />
-                        </div>
-                        <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#informationModal">Rezervasyon Yap</button>
-                    </form>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
+	<div class="col-12">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">Yeni Rezervasyon Ekleme Sayfası</h4>
+				<a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+				<div class="heading-elements">
+					<ul class="list-inline mb-0">
+						<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+						<li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+						<li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+						<li><a data-action="close"><i class="ft-x"></i></a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="card-content collapse show">
+				<div class="card-body">
+					<p class="card-text"></p>
+					<form method="post">
+						<div class="form-group">
+							@Html.Label("Lokasyon")
+							@Html.DropDownListFor(x => x.Destination, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", id = "destination" })
+						</div>
+						<div class="form-group">
+							@Html.Label("Kişi Sayısı")
+							<input type="text" asp-for="PersonCount" class="form-control" id="personcount" />
+						</div>
+						<div class="form-group">
+							@Html.Label("Tarih")
+							<input type="date" asp-for="ReservationDate" class="form-control" id="restime" />
+						</div>
+						<div class="form-group">
+							@Html.Label("Notunuz")
+							<input type="text" asp-for="Description" class="form-control" id="description" />
+						</div>
+						<button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#informationModal">Rezervasyon Yap</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 
 
 @* Modal Yapısı *@
 <div class="modal fade" id="informationModal" tabindex="-1" aria-labelledby="informationModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="informationModalLabel">Dikkat!</h3>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    Şu anda yapacak olduğunuz rezervasyon, ilk önce moderatörlerimiz tarafından bir onay sürecine girecek olup
-                    daha sonrasında ise Müşteri/Alıcı ile iletişimi sağlanacaktır.
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">İptal</button>
-                <button onclick="postValues()" data-bs-toggle="modal" data-bs-target="#successModal" data-bs-dismiss="modal" class="btn btn-primary">Kabul ediyorum</button>
-            </div>
-        </div>
-    </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" id="informationModalLabel">Dikkat!</h3>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>
+					Şu anda yapacak olduğunuz rezervasyon, ilk önce moderatörlerimiz tarafından bir onay sürecine girecek olup
+					daha sonrasında ise Müşteri/Alıcı ile iletişimi sağlanacaktır.
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">İptal</button>
+				<button onclick="postValues()" data-bs-toggle="modal" data-bs-target="#successModal" data-bs-dismiss="modal" class="btn btn-primary">Kabul ediyorum</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="successModalLabel">Başarılı!</h3>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    Rezervasyon başvurunuz başarı ile iletilmiştir!
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success" data-bs-dismiss="modal">Mükemmel!</button>
-            </div>
-        </div>
-    </div>
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title" id="successModalLabel">Başarılı!</h3>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+			<div class="modal-body">
+				<p>
+					Rezervasyon başvurunuz başarı ile iletilmiştir!
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-success" data-bs-dismiss="modal">Mükemmel!</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript">
-    function postValues() {
-        let values = {
-            Destination: $("#destination").val(),
-            PersonCount: $("#personcount").val(),
-            ReservationDate: $("#restime").val(),
-            Description: $("#description").val()
-        };
+	function postValues() {
+		let values = {
+			Destination: $("#destination").val(),
+			PersonCount: $("#personcount").val(),
+			ReservationDate: $("#restime").val(),
+			Description: $("#description").val()
+		};
 
-        $.ajax({
-            type: "post",
-            url: "/Member/Reservation/NewReservation/",
-            data: values,
-            success: function (response) {
-                $('#informationModal').modal('hide'); // Bilgilendirme modalını kapatma
-                $('#successModal').modal('show'); // Başarı modalını açma
-            }
-        });
-    }
+		$.ajax({
+			type: "post",
+			url: "/Member/Reservation/NewReservation/",
+			data: values,
+			success: function (response) {
+				$('#informationModal').modal('hide'); // Bilgilendirme modalını kapatma
+				$('#successModal').modal('show'); // Başarı modalını açma
+			}
+		});
+	}
 </script>
