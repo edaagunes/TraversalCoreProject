@@ -84,8 +84,8 @@
 
 **🔑 Giriş Yap**: Kayıt olan kullanıcı bilgilerini girerek Misafir Paneline giriş yapar.
 
-![SİGNUP](https://github.com/user-attachments/assets/ba1002db-b2b9-424e-8ebd-b098ce1098ea)
-![signin](https://github.com/user-attachments/assets/26377731-9dd5-4538-b1e5-f417bdbcb155)
+![signUp](https://github.com/user-attachments/assets/98d9a435-d976-436e-a690-15fe1f72680e)
+![signin](https://github.com/user-attachments/assets/42127918-3be1-41c3-b54e-f23bbf4537ce)
 
 
 ### 🔒 Şifremi Unuttum / Şifre Güncelleme İşlemleri
