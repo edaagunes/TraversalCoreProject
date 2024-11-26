@@ -26,7 +26,7 @@
 					<form method="post">
 						<div class="form-group">
 							@Html.Label("Lokasyon")
-							@Html.DropDownListFor(x => x.Destination, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", id = "destination" })
+							@Html.DropDownListFor(x => x.DestinationId, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", id = "destination" })
 						</div>
 						<div class="form-group">
 							@Html.Label("Kişi Sayısı")
@@ -40,8 +40,9 @@
 							@Html.Label("Notunuz")
 							<input type="text" asp-for="Description" class="form-control" id="description" />
 						</div>
-						<button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#informationModal">Rezervasyon Yap</button>
+						<button type="submit" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#informationModal">Rezervasyon Yap</button>
 					</form>
+
 				</div>
 			</div>
 		</div>
@@ -92,21 +93,26 @@
 </div>
 
 <script type="text/javascript">
-	function postValues() {
+		function postValues() {
 		let values = {
-			Destination: $("#destination").val(),
+			DestinationId: $("#destination").val(),
 			PersonCount: $("#personcount").val(),
 			ReservationDate: $("#restime").val(),
 			Description: $("#description").val()
 		};
 
+		console.log(values);  // Değerlerin doğru gönderildiğini görmek için konsol çıktısı alabilirsiniz.
+
 		$.ajax({
-			type: "post",
+			type: "POST",
 			url: "/Member/Reservation/NewReservation/",
 			data: values,
 			success: function (response) {
 				$('#informationModal').modal('hide'); // Bilgilendirme modalını kapatma
 				$('#successModal').modal('show'); // Başarı modalını açma
+			},
+			error: function (xhr, status, error) {
+				alert("Hata oluştu: " + error);
 			}
 		});
 	}

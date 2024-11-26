@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Concrete;
+﻿using BusinessLayer.Abstract;
+using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
@@ -15,20 +16,21 @@ namespace TraversalCoreProject.Areas.Member.Controllers
 	public class ReservationController : Controller
     {
         DestinationManager destinationManager = new DestinationManager(new EfDestinationDal());
-        ReservationManager reservationManager = new ReservationManager(new EfReservationDal());
-        private readonly UserManager<AppUser> _userManager;
+        private readonly IReservationService _reservationService;
+		private readonly UserManager<AppUser> _userManager;
 
-        public ReservationController(UserManager<AppUser> userManager)
-        {
-            _userManager = userManager;
-        }
+		public ReservationController(UserManager<AppUser> userManager, IReservationService reservationService)
+		{
+			_userManager = userManager;
+			_reservationService = reservationService;
+		}
 
-        public async Task<IActionResult> MyCurrentReservation()
+		public async Task<IActionResult> MyCurrentReservation()
         {
 			ViewData["PageTitle"] = "Aktif Rezervasyonlar";
 
 			var values = await _userManager.FindByNameAsync(User.Identity.Name);
-			var valuesList = reservationManager.GetListWithReservationByWaitAccepted(values.Id);
+			var valuesList = _reservationService.GetListWithReservationByWaitAccepted(values.Id);
 			return View(valuesList);
 		}
         public async Task<IActionResult> MyOldReservation()
@@ -36,7 +38,7 @@ namespace TraversalCoreProject.Areas.Member.Controllers
 			ViewData["PageTitle"] = "Geçmiş Rezervasyonlar";
 
 			var values = await _userManager.FindByNameAsync(User.Identity.Name);
-			var valuesList = reservationManager.GetListWithReservationByWaitPrevious(values.Id);
+			var valuesList = _reservationService.GetListWithReservationByWaitPrevious(values.Id);
 			return View(valuesList);
 		}
 
@@ -45,7 +47,7 @@ namespace TraversalCoreProject.Areas.Member.Controllers
 			ViewData["PageTitle"] = "Onay Bekleyen Rezervasyonlar";
 
 			var values = await _userManager.FindByNameAsync(User.Identity.Name);
-            var valuesList = reservationManager.GetListWithReservationByWaitApproval(values.Id);
+            var valuesList = _reservationService.GetListWithReservationByWaitApproval(values.Id);
             return View(valuesList);
         }
 
@@ -64,12 +66,27 @@ namespace TraversalCoreProject.Areas.Member.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult NewReservation(Reservation reservation)
-        {
-            reservation.AppUserId = 1;
-            reservation.Status = "Onay Bekliyor";
-            reservationManager.TAdd(reservation);
-            return RedirectToAction("MyCurrentReservation");
-        }
-    }
+		public async Task<IActionResult> NewReservation(Reservation reservation)
+		{
+			if (ModelState.IsValid)
+			{
+				// Kullanıcı verilerini alıyoruz
+				var user = await _userManager.FindByNameAsync(User.Identity.Name);
+				reservation.AppUserId = user.Id;
+
+				if (reservation.DestinationId == 0 || reservation.AppUserId == 0)
+				{
+					TempData["Error"] = "Lütfen tüm alanları doldurun!";
+					return RedirectToAction("NewReservation");
+				}
+
+				reservation.Status = "Onay Bekliyor";
+				reservation.ReservationDate = reservation.ReservationDate.Date; // Tarih formatını düzenler
+
+				 _reservationService.TAdd(reservation);  // Veriyi kaydediyoruz
+				return RedirectToAction("MyCurrentReservation");  // Yönlendirme
+			}
+			return View(reservation);
+		}
+	}
 }
