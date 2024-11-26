@@ -1,0 +1,190 @@
+﻿@model IEnumerable<Guide>
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+
+<section class="w3l-about-breadcrumb text-left">
+	<div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+		<div class="container py-2">
+			<h2 class="title">Hakkımızda</h2>
+			<ul class="breadcrumbs-custom-path mt-2">
+				<li><a href="/">Ana Sayfa</a></li>
+				<li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Hakkımızda </li>
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section class="w3l-cta4 py-5">
+	<div class="container py-lg-5">
+		<div class="ab-section text-center">
+			<h6 class="sub-title">Hakkımızda</h6>
+			<h3 class="hny-title">Tüm dünyaya seyahat ederek anılar biriktirelim istiyoruz.</h3>
+			<p class="py-3 mb-3">
+				Seyahat etmek, yeni yerler keşfetmek ve farklı kültürlerle tanışmak hayatımızda kalıcı izler bırakır. Biz de bu tutkuyu sizlerle paylaşmak için buradayız!
+			</p>
+
+		</div>
+		<div class="row mt-5">
+			<div class="col-md-9 mx-auto">
+				<img src="~/Traversal-Liberty/assets/images/banner3.jpg" class="img-fluid" alt="About Us">
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="w3l-content-6 py-5">
+	<div class="container py-lg-5">
+		<div class="row">
+			<div class="col-lg-6 content-6-left pr-lg-5">
+				<h6 class="sub-title">Neden Bizi Seçmelisiniz?</h6>
+				<h3 class="hny-title">Hayat konfor alanınızın dışında başlar.</h3>
+			</div>
+			<div class="col-lg-6 content-6-right mt-lg-0 mt-4">
+				<p class="mb-3">
+					Seyahat etmek sadece bir yerden başka bir yere gitmek değildir. Seyahatin özü, yeni deneyimler kazanmak ve anılar biriktirmektir.
+				</p>
+				<p class="mb-3">
+					Dünyanın dört bir yanındaki benzersiz güzellikleri keşfetmek için sizleri bekliyoruz. Hem güvenli hem de unutulmaz deneyimler sunuyoruz.
+				</p>
+
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //content-6-->
+<section class="w3l-grids1">
+	<div class="hny-three-grids py-5">
+		<div class="container py-lg-5">
+			<div class="row">
+				<!-- İlk Kart -->
+				<div class="col-md-4 col-sm-6 mt-4 grids5-info">
+					<h5>Destinasyonlar</h5>
+					<h4><a href="#url">Yatırımcı İlişkileri</a></h4>
+					<p>En popüler seyahat paketlerimiz hakkında daha fazla bilgi alın ve yatırım fırsatlarınızı keşfedin. Müşterilerimize unutulmaz deneyimler sunmak için çalışıyoruz.</p>
+				</div>
+				<!-- İkinci Kart -->
+				<div class="col-md-4 col-sm-6 mt-4 grids5-info">
+					<h5>İş Ortaklıkları</h5>
+					<h4><a href="#url">Seyahatle Birlikte Büyüyün</a></h4>
+					<p>Güçlü iş ortaklıkları kurarak, seyahat endüstrisinde başarılı olmanıza yardımcı oluyoruz. Birlikte daha fazla destinasyona ulaşmak için bizimle iş birliği yapın.</p>
+				</div>
+				<!-- Üçüncü Kart -->
+				<div class="col-md-4 col-sm-6 mt-4 grids5-info">
+					<h5>Müşteri Hizmetleri</h5>
+					<h4><a href="#url">Seyahat Destek Hizmeleri</a></h4>
+					<p>Her adımda yanınızdayız! Müşteri destek ekibimiz, seyahat planlamanızı daha kolay hale getirmek için her zaman hazır. Sorularınızı sorabilirsiniz.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- stats -->
+<section class="w3l-statshny py-5" id="stats">
+	<div class="container py-lg-5 py-md-4">
+		<div class="w3-stats-inner-info">
+			<div class="row">
+				<div class="col-lg-4 col-6 stats_info counter_grid text-left">
+					<span class="fa fa-smile-o"></span>
+					<p class="counter">1730</p>
+					<h4>Mutlu Müşteriler</h4>
+				</div>
+				<div class="col-lg-4 col-6 stats_info counter_grid1 text-left">
+					<span class="fa fa-users"></span>
+					<p class="counter">730</p>
+					<h4>Toplam Seyahatler</h4>
+				</div>
+				<div class="col-lg-4 col-6 stats_info counter_grid mt-lg-0 mt-5 text-left">
+					<span class="fa fa-database"></span>
+					<p class="counter">4</p>
+					<h4>Şubeler</h4>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //stats -->
+<!-- team -->
+<section class="w3l-team" id="team">
+	<div class="team-block py-5">
+		<div class="container py-lg-5">
+			<div class="title-content text-center mb-lg-3 mb-4">
+				<h6 class="sub-title">Takımımız</h6>
+				<h3 class="hny-title">Rehberlerimizle Tanışın</h3>
+			</div>
+			<div class="row">
+				@foreach (var item in Model)
+				{
+					<div class="col-lg-3 col-6 mt-lg-5 mt-4">
+						<div class="box16">
+							<a href="/Guide/Index/"><img src="@item.Image" alt="" class="img-fluid" /></a>
+							<div class="box-content">
+								<h3 class="title"><a href="/Guide/Index/">@item.Name</a></h3>
+								<span class="post">@item.Description</span>
+								<ul class="social">
+									<li>
+										<a href="#" class="facebook">
+											<span class="fa fa-facebook-f"></span>
+										</a>
+									</li>
+									<li>
+										<a href="#" class="twitter">
+											<span class="fa fa-twitter"></span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+</section>
+<!-- //team -->
+<!--/w3l-footer-29-main-->
+<!-- Template JavaScript -->
+<script src="assets/js/jquery-3.3.1.min.js"></script>
+<script src="assets/js/theme-change.js"></script>
+<!-- stats number counter-->
+<script src="assets/js/jquery.waypoints.min.js"></script>
+<script src="assets/js/jquery.countup.js"></script>
+<script>
+	$('.counter').countUp();
+</script>
+<!-- //stats number counter -->
+<!--/MENU-JS-->
+<script>
+	$(window).on("scroll", function () {
+	  var scroll = $(window).scrollTop();
+
+	  if (scroll >= 80) {
+		$("#site-header").addClass("nav-fixed");
+	  } else {
+		$("#site-header").removeClass("nav-fixed");
+	  }
+	});
+
+	//Main navigation Active Class Add Remove
+	$(".navbar-toggler").on("click", function () {
+	  $("header").toggleClass("active");
+	});
+	$(document).on("ready", function () {
+	  if ($(window).width() > 991) {
+		$("header").removeClass("active");
+	  }
+	  $(window).on("resize", function () {
+		if ($(window).width() > 991) {
+		  $("header").removeClass("active");
+		}
+	  });
+	});
+</script>
+<!--//MENU-JS-->
+
+<script src="assets/js/bootstrap.min.js"></script>
+
+
+
