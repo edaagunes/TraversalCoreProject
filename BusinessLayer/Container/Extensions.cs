@@ -58,6 +58,8 @@ namespace BusinessLayer.Container
 			services.AddScoped<ITestimonialService, TestimonialManager>();
 			services.AddScoped<ITestimonialDal, EfTestimonialDal>();
 
+			services.AddScoped<INewsletterService, NewsletterManager>();
+			services.AddScoped<INewsletterDal, EfNewsletterDal>();
 
 			services.AddScoped<IUowDal,UowDal>();
 		}

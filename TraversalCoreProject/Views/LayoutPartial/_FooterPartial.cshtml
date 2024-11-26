@@ -1,4 +1,5 @@
-﻿<footer>
+﻿
+<footer>
     <!-- footer -->
     <section class="w3l-footer">
         <div class="w3l-footer-16-main py-5">
@@ -38,17 +39,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12 column pl-lg-5 column4 mt-lg-0 mt-5">
-                        <h3>Mail Bülteni </h3>
-                        <div class="end-column">
-                            <h4>Son gelişmeler ve kampanyalardan haberdar olun.</h4>
-                            <form action="#" class="subscribe" method="post">
-                                <input type="email" name="email" placeholder="Email Adresiniz" required="">
-                                <button style="width:150px" type="submit">Abone Ol</button>
-                            </form>
-                            <p>Kampanyalar için bültenimize abone olun.</p>
-                        </div>
-                    </div>
+                    
+                    @await Html.PartialAsync("/Views/LayoutPartial/_SubscribePartial.cshtml",ViewData["Newsletter"])
                 </div>
                 <div class="d-flex below-section justify-content-between align-items-center pt-4 mt-5">
                     <div class="columns text-lg-left text-center">

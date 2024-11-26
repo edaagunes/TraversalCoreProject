@@ -1,0 +1,12 @@
+﻿@model Newsletter
+<div class="col-lg-6 col-md-12 column pl-lg-5 column4 mt-lg-0 mt-5">
+    <h3>Mail Bülteni </h3>
+    <div class="end-column">
+        <h4>Son gelişmeler ve kampanyalardan haberdar olun.</h4>
+        <form action="/Newsletter/Subscribe/" class="subscribe" method="post">
+            <input type="email" asp-for="Mail" placeholder="Email Adresiniz" required="">
+            <button style="width:150px" type="submit">Abone Ol</button>
+        </form>
+        <p>Kampanyalar için bültenimize abone olun.</p>
+    </div>
+</div>
