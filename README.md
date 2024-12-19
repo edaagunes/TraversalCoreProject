@@ -106,7 +106,7 @@
   </tr>
   <tr>
     <td>📚 Entity Framework kullanılmıştır.</td>
-    <td>🔨 DbFirst yaklaşımı uygulanmıştır.</td>
+    <td>🔨 CodeFirst yaklaşımı uygulanmıştır.</td>
   </tr>
   <tr>
     <td>🏢 N Katmanlı Mimari ile oluşturuldu.</td>
